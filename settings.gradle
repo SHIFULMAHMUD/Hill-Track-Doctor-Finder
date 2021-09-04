@@ -1,2 +1,3 @@
+include ':notifyme'
 include ':app'
 rootProject.name = "Hill Track Doctor Finder"
