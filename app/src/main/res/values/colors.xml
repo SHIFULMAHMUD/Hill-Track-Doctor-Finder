@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/purple</color>
+    <color name="colorPrimaryDark">@color/purple_dark</color>
+    <color name="colorAccent">#FCF5AF</color>
+    <color name="colorAccent2">#FFFBEC</color>
+    <color name="colorControlActivated">@color/purple</color>
+    <color name="colorOnPrimary">@color/purple</color>
+    <color name="colorSecondary">@color/purple_dark</color>
+    <color name="colorSecondaryVariant">@color/purple_dark</color>
+    <color name="colorOnSecondary">@color/purple_dark</color>
+
+    <color name="purple_dark">#57003A</color>
+    <color name="purple">#A4034E</color>
+    <color name="black">#000000</color>
+    <color name="overlay_dark_30">#4D000000</color>
+    <color name="grey_80">#37474F</color>
+    <color name="grey_3">#f7f7f7</color>
+    <color name="grey_5">#f2f2f2</color>
+    <color name="grey_20">#cccccc</color>
+    <color name="grey_10">#e6e6e6</color>
+    <color name="grey_40">#999999</color>
+    <color name="grey_60">#666666</color>
+    <color name="grey_400">#BDBDBD</color>
+    <color name="placeholder_bg">#dddddd</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="color_red">#FF0023</color>
+    <color name="color_red_two">#FF0000</color>
+    <color name="color_cream">#FCF5AF</color>
+    <color name="color_chocolate">#923600</color>
+    <color name="transparent">#00000000</color>
+    <!--    mobile_login-->
+    <color name="purple_action_bar">#950063</color>
+    <color name="black_67">#AB000000</color>
+    <color name="color_gray">#707070</color>
+    <color name="color_white_gray">#F3F3F3</color>
+    <color name="color_sky_blue">#30AABC</color>
+    <!--    product details-->
+    <color name="color_black_59">#96000000</color>
+    <color name="color_gray_23">#3B707070</color>
+    <color name="color_gray_10">#1A707070</color>
+    <!--acitvity login-->
+    <color name="color_black_41">#69000000</color>
+    <color name="color_gray_62">#9E707070</color>
+    <color name="color_blue">#3C5899</color>
+    <!--activity profile-->
+    <color name="purple_dark_10">#1A950063</color>
+    <!--order details-->
+    <color name="color_gray_41">#69707070</color>
+
+    <color name="grey_500">#9E9E9E</color>
+    <color name="grey_600">#808080</color>
+    <color name="grey_700">#616161</color>
+    <color name="grey_800">#424242</color>
+    <color name="grey_900">#212121</color>
+    <color name="grey_1000">#1a1a1a</color>
+
+</resources>

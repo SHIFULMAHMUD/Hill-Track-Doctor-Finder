@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Hill Track Doctor Finder</string>
+    <!--    layout intro-->
+    <string name="first_text" translatable="false">Find Nearest Doctor</string>
+    <string name="second_text" translatable="false">Get Doorstep Medicine</string>
+    <string name="third_text" translatable="false">24X7 Boat Service</string>
+    <string name="txt_skip" translatable="false">Skip</string>
+    <string name="txt_get_start" translatable="false">Get Start</string>
+</resources>
