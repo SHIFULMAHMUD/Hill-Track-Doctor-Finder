@@ -75,6 +75,6 @@ public class IntroScreenActivity extends AppCompatActivity {
     private void loadData() {
         screenItemList.add(new ScreenItem(getString(R.string.first_text), R.drawable.ic_intro_first));
         screenItemList.add(new ScreenItem(getString(R.string.second_text), R.drawable.ic_intro_second));
-        screenItemList.add(new ScreenItem(getString(R.string.third_text), R.drawable.ic_intro_third));
+        screenItemList.add(new ScreenItem(getString(R.string.third_text), R.drawable.boat));
     }
 }

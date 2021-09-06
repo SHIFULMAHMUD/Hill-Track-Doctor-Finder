@@ -14,6 +14,7 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 import java.util.Calendar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import es.dmoral.toasty.Toasty;
 
 public class ReminderActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
@@ -51,6 +52,7 @@ public class ReminderActivity extends AppCompatActivity implements DatePickerDia
             @Override
             public void onClick(View v) {
                 NotifyMe.cancel(getApplicationContext(),"test");
+                Toasty.success(ReminderActivity.this,"Reminder Deleted",Toasty.LENGTH_SHORT).show();
             }
         });
         btnNotify.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +92,7 @@ public class ReminderActivity extends AppCompatActivity implements DatePickerDia
                 .rrule("FREQ=MINUTELY;INTERVAL=5;COUNT=2")
                 .build();
 
+        Toasty.success(ReminderActivity.this,"Reminder Set Successfully",Toasty.LENGTH_SHORT).show();
     }
 
 }
