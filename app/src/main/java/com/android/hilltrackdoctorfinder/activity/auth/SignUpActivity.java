@@ -6,23 +6,19 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.hilltrackdoctorfinder.R;
 import com.android.hilltrackdoctorfinder.activity.BaseActivity;
@@ -30,31 +26,26 @@ import com.android.hilltrackdoctorfinder.activity.SplashScreenActivity;
 import com.android.hilltrackdoctorfinder.api.ApiClient;
 import com.android.hilltrackdoctorfinder.api.ApiInterface;
 import com.android.hilltrackdoctorfinder.fragment.NoInternetFragment;
-import com.android.hilltrackdoctorfinder.model.Signup;
+import com.android.hilltrackdoctorfinder.model.Register;
 import com.android.hilltrackdoctorfinder.utils.CheckStatus;
 import com.android.hilltrackdoctorfinder.utils.Tools;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
+import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
-import com.google.gson.Gson;
-import com.mikhaellopez.circularimageview.CircularImageView;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
@@ -98,6 +89,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     TextView errorTextViewConfirmPassword;
     String firebase_token;
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
+    public static final int REQUEST_CHECK_SETTINGS = 99;
     String latitude,longitude;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +97,14 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
         getFirebaseClientToken();
+        //Check Enable Location
+        if (ContextCompat.checkSelfPermission(SignUpActivity.this,
+                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            if (Build.VERSION.SDK_INT>=23) //Android MarshMellow Version or above
+            {
+                createLocationRequest();
+            }
+        }
         //Runtime permissions
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -125,7 +125,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
             if (checkValitation(editTextFirstName.getText().toString(), editTextFirstName,errorTextViewFirstName, "[First Name must be filled out]"))
                 if (checkValitation(editTextLastName.getText().toString(), editTextLastName,errorTextViewLastName, "[Last Name must be filled out]"))
                     if (phoneValidation(editTextPhone.getText().toString(), errorTextViewPhone, "[Phone Number must be valid]"))
-                            if (passwordValitation(editTextPassword.getText().toString(), errorTextViewPassword, "[Password must be filled out]"))
+                            if (passwordValidation(editTextPassword.getText().toString(), errorTextViewPassword, "[Password must be filled out]"))
                                 if (checkValitation(editTextConfirmPassword.getText().toString(), editTextConfirmPassword,errorTextViewConfirmPassword, "[Confirm Password must be filled out]"))
                                     if (checkMatchPassword(editTextPassword.getText().toString(), editTextConfirmPassword.getText().toString(), errorTextViewConfirmPassword))
                                         checkNetwork();
@@ -153,17 +153,24 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     private void registrationRequest() {
         loading.start();
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<Signup> call = apiInterface.registration(editTextFirstName.getText().toString(),editTextLastName.getText().toString(),editTextPhone.getText().toString(),editTextPassword.getText().toString(),latitude,longitude,firebase_token);
-        call.enqueue(new Callback<Signup>() {
+        Call<Register> call = apiInterface.registration(editTextFirstName.getText().toString(),editTextLastName.getText().toString(),editTextPhone.getText().toString(),editTextPassword.getText().toString(),latitude,longitude,firebase_token);
+        call.enqueue(new Callback<Register>() {
             @Override
-            public void onResponse(Call<Signup> call, Response<Signup> response) {
+            public void onResponse(Call<Register> call, Response<Register> response) {
                 if (response.code()==200) {
                     loading.end();
-                    Signup body=response.body();
+                    Register body=response.body();
                     if (body.getValue().equals("success"))
                     {
                         Tools.setSuccessToast(SignUpActivity.this,body.getMessage());
                         addNotification();
+                        sharedprefer.setMobile_number(editTextPhone.getText().toString());
+                        sharedprefer.setFirst_name(editTextFirstName.getText().toString());
+                        sharedprefer.setLast_name(editTextLastName.getText().toString());
+                        Intent intent=new Intent(SignUpActivity.this, SignInActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.enter, R.anim.exit);
+                        finish();
                     }else if (body.getValue().equals("exists"))
                     {
                         Tools.setWarningToast(SignUpActivity.this,body.getMessage());
@@ -175,7 +182,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
                 }
             }
             @Override
-            public void onFailure(Call<Signup> call, Throwable t) {
+            public void onFailure(Call<Register> call, Throwable t) {
                 loading.end();
             }
         });
@@ -218,7 +225,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         }
     }
 
-    private boolean passwordValitation(String value, TextView error, String reason) {
+    private boolean passwordValidation(String value, TextView error, String reason) {
         if (value.isEmpty()) {
             error.setVisibility(View.VISIBLE);
             error.setText(reason);
@@ -288,6 +295,44 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
                     }
                 });
 
+    }
+    protected void createLocationRequest() {
+        LocationRequest locationRequest = LocationRequest.create();
+        locationRequest.setInterval(10000);
+        locationRequest.setFastestInterval(5000);
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                .addLocationRequest(locationRequest);
+
+        SettingsClient client = LocationServices.getSettingsClient(this);
+        Task<LocationSettingsResponse> task = client.checkLocationSettings(builder.build());
+        task.addOnSuccessListener(this, new OnSuccessListener<LocationSettingsResponse>() {
+            @Override
+            public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
+                // All location settings are satisfied. The client can initialize
+                // location requests here.
+
+            }
+        });
+
+        task.addOnFailureListener(this, new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                if (e instanceof ResolvableApiException) {
+                    // Location settings are not satisfied, but this can be fixed
+                    // by showing the user a dialog.
+                    try {
+                        // Show the dialog by calling startResolutionForResult(),
+                        // and check the result in onActivityResult().
+                        ResolvableApiException resolvable = (ResolvableApiException) e;
+                        resolvable.startResolutionForResult(SignUpActivity.this,
+                                REQUEST_CHECK_SETTINGS);
+                    } catch (IntentSender.SendIntentException sendEx) {
+                        // Ignore the error.
+                    }
+                }
+            }
+        });
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

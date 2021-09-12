@@ -3,7 +3,7 @@ package com.android.hilltrackdoctorfinder.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Signup {
+public class Register {
     @SerializedName("first_name")
     public String first_name;
     @SerializedName("last_name")
@@ -23,7 +23,7 @@ public class Signup {
     @SerializedName("message")
     public String message;
 
-    public Signup() {}
+    public Register() {}
 
     public void setFirst_name(String first_name) {
         this.first_name = first_name;

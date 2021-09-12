@@ -194,7 +194,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@+id/textInputRefer"
-                    app:layout_constraintBottom_toTopOf="@+id/textViewForgetPassword"
+                    app:layout_constraintBottom_toTopOf="@+id/checkboxRemember"
                     app:layout_constraintStart_toStartOf="parent"
                     android:textColor="@color/red_700"
                     android:visibility="gone"
@@ -202,31 +202,31 @@
                     android:layout_marginTop="@dimen/_5_dp"
                     android:layout_marginLeft="@dimen/_30_dp"
                     android:layout_marginRight="@dimen/_20_dp"/>
-                <TextView
-                    android:id="@+id/textViewForgetPassword"
+
+                <CheckBox
+                    android:id="@+id/checkboxRemember"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="10dp"
-                    android:text="@string/fPassword"
+                    android:text="Remember Me"
                     android:textColor="@color/colorPrimary"
                     android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="@+id/textInputRefer"
+                    app:layout_constraintStart_toStartOf="@+id/textInputRefer"
                     app:layout_constraintTop_toBottomOf="@+id/errorTextViewPassword"
-                    android:layout_marginRight="10dp" />
+                    android:layout_marginTop="@dimen/_20_dp"
+                    android:textStyle="bold"/>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardViewLogin"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:text="@string/sign_in"
                     android:textAllCaps="false"
                     app:cardCornerRadius="30dp"
                     app:cardElevation="5dp"
                     app:layout_constraintEnd_toEndOf="@+id/textInputRefer"
                     app:layout_constraintStart_toStartOf="@+id/textInputRefer"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewForgetPassword"
+                    app:layout_constraintTop_toBottomOf="@+id/checkboxRemember"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_marginBottom="@dimen/_20_dp">
 
