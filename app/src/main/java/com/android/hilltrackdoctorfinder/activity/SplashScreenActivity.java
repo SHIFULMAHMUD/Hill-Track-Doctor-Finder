@@ -20,26 +20,48 @@ public class SplashScreenActivity extends AppCompatActivity {
     Boolean loggedIn = false;
     Handler handler;
 
+    Thread timer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        Tools.setSystemBarColor(SplashScreenActivity.this,R.color.color_blue);
-//        FirebaseMessaging.getInstance().subscribeToTopic("Emedilife");
-        handler = new Handler();
-        handler.postDelayed(new Runnable() {
+        Tools.setSystemBarColor(SplashScreenActivity.this,R.color.purple_action_bar);
+//        FirebaseMessaging.getInstance().subscribeToTopic("Health");
+//        handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//        Intent intent;
+//        if (loggedIn) {
+//            intent = new Intent(getApplicationContext(), HomeActivity.class);
+//        } else {
+//            intent = new Intent(getApplicationContext(), IntroScreenActivity.class);
+//        }
+//        startActivity(intent);
+//        finish();
+//            }
+//        }, 2000);
+
+        timer = new Thread(){
             @Override
             public void run() {
-        Intent intent;
-        if (loggedIn) {
-            intent = new Intent(getApplicationContext(), HomeActivity.class);
-        } else {
-            intent = new Intent(getApplicationContext(), IntroScreenActivity.class);
-        }
-        startActivity(intent);
-        finish();
+                try {
+                    synchronized (this){
+                        wait(5000);
+                    }
+                } catch (InterruptedException e){
+                    e.printStackTrace();
+                } finally {
+                    Intent intent = new Intent(SplashScreenActivity.this, IntroScreenActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.enter, R.anim.exit);
+                    finish();
+                }
             }
-        }, 2000);
+        };
+        timer.start();
+    }
     }
 
 //    private void isLoginFirstTime() {
@@ -56,4 +78,3 @@ public class SplashScreenActivity extends AppCompatActivity {
 //        finish();
 //    }
 
-}

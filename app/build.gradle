@@ -12,7 +12,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -57,10 +57,16 @@ dependencies {
 // Firebase Dependency
     implementation 'com.google.firebase:firebase-messaging:20.2.0'
     implementation 'com.google.firebase:firebase-auth:19.3.1'
-    implementation 'com.google.android.gms:play-services-places:11.8.0'
+// Google Map Dependency
+    implementation 'com.google.android.gms:play-services-places:17.0.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.1.0'
+    implementation 'com.google.maps.android:android-maps-utils:0.5+'
 // Alarm Notification
     implementation project(path: ':notifyme')
 // Date Picker
     implementation 'com.wdullaer:materialdatetimepicker:3.6.0'
+// Progress Bar
+    implementation 'com.airbnb.android:lottie:3.4.0'
 }
+apply plugin: 'com.google.gms.google-services'

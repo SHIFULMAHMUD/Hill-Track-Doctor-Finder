@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "198547459745",
+    "project_id": "health-guardian-a9b38",
+    "storage_bucket": "health-guardian-a9b38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198547459745:android:dc64dfb75bd5fd8dc32ae0",
+        "android_client_info": {
+          "package_name": "com.android.hilltrackdoctorfinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198547459745-4fk6n5jc5aer4cliepgf07g844017et9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfmljvGMpk-ZxfWKAgFm7ynQVs8hGvRfQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198547459745-4fk6n5jc5aer4cliepgf07g844017et9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

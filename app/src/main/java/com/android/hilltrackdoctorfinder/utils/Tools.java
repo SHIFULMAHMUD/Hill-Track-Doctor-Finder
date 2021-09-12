@@ -65,8 +65,15 @@ public class Tools {
     //    public Tools(Activity activity){
 //        this.activity = activity;
 //    }
+
     public static void setErrorToast(Context context, String message) {
         Toasty.error(context, message, Toast.LENGTH_SHORT, true).show();
+    }
+    public static void setWarningToast(Context context, String message) {
+        Toasty.warning(context, message, Toast.LENGTH_SHORT, true).show();
+    }
+    public static void setSuccessToast(Context context, String message) {
+        Toasty.success(context, message, Toast.LENGTH_SHORT, true).show();
     }
 
     public static String getReadableDate(Context context, String date) {

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.android.hilltrackdoctorfinder.R;
+import com.android.hilltrackdoctorfinder.activity.auth.SignInActivity;
 import com.android.hilltrackdoctorfinder.adapter.AdapterPagerIntro;
 import com.android.hilltrackdoctorfinder.model.ScreenItem;
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
@@ -64,7 +65,7 @@ public class IntroScreenActivity extends AppCompatActivity {
         textViewSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
                 startActivity(intent);
                 finish();
             }

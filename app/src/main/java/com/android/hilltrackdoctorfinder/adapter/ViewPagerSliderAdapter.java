@@ -40,8 +40,7 @@ public class ViewPagerSliderAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View view = LayoutInflater.from(context).inflate(R.layout.layout_slider_image, null);
         ImageView img_slider_image = view.findViewById(R.id.img_slider_image);
-        Glide.with(context).load(mSliderItems.get(position)).into(img_slider_image);
-//        Glide.with(context).load(mSliderItems.get(position)).placeholder(R.drawable.ic_placeholder).into(img_slider_image);
+        Glide.with(context).load(mSliderItems.get(position)).placeholder(R.drawable.ic_placeholder).into(img_slider_image);
         ViewPager viewPager = (ViewPager) container;
         viewPager.addView(view);
 
