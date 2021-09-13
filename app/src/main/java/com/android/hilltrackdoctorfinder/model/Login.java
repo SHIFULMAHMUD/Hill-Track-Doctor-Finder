@@ -18,28 +18,6 @@ public class Login {
     @SerializedName("message")
     public String message;
 
-    public Login() {}
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     public String getValue() {
         return value;
     }

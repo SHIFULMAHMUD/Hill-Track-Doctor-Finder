@@ -45,12 +45,19 @@ public class Sharedprefer {
         default_prefence.edit().putString("user_mobile_number", mobile_number).apply();
     }
 
-    public String getEmail() {
-        return default_prefence.getString("user_email", "");
+    public String getLatitude() {
+        return default_prefence.getString("user_latitude", "");
     }
 
-    public void setEmail(String email) {
-        default_prefence.edit().putString("user_email", email).apply();
+    public void setLatitude(String user_latitude) {
+        default_prefence.edit().putString("user_latitude", user_latitude).apply();
+    }
+    public String getLongitude() {
+        return default_prefence.getString("user_longitude", "");
+    }
+
+    public void setLongitude(String user_longitude) {
+        default_prefence.edit().putString("user_longitude", user_longitude).apply();
     }
 
     public String getRecentNoInternet_page() {

@@ -1,9 +1,8 @@
 package com.android.hilltrackdoctorfinder.model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Register {
+public class User {
     @SerializedName("first_name")
     public String first_name;
     @SerializedName("last_name")
@@ -18,16 +17,33 @@ public class Register {
     public String longitude;
     @SerializedName("token")
     public String token;
-    @SerializedName("value")
-    public String value;
-    @SerializedName("message")
-    public String message;
 
-    public String getValue() {
-        return value;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public String getMessage() {
-        return message;
+    public String getLast_name() {
+        return last_name;
     }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
 }

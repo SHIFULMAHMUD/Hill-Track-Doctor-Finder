@@ -21,12 +21,12 @@
             android:orientation="horizontal"
             android:weightSum="4">
             <TextView
+                android:id="@+id/nameTextView"
                 android:layout_width="0dp"
                 android:layout_weight="3.4"
                 android:layout_height="25dp"
                 android:gravity="center_vertical"
                 android:textColor="@color/white"
-                android:text="Welcome Shiful!"
                 android:textStyle="bold"
                 android:layout_margin="20dp"/>
             <ImageButton
@@ -80,6 +80,7 @@
                     android:layout_marginTop="5dp"
                     android:weightSum="4">
                     <LinearLayout
+                        android:id="@+id/doctorLayout"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
@@ -138,6 +139,7 @@
                             android:text="Get Medicine"/>
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/reminderLayout"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"

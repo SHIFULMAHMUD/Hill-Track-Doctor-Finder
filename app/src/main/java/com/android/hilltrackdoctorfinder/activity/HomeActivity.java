@@ -2,39 +2,68 @@ package com.android.hilltrackdoctorfinder.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.android.hilltrackdoctorfinder.R;
+import com.android.hilltrackdoctorfinder.activity.auth.SignInActivity;
+import com.android.hilltrackdoctorfinder.activity.auth.SignUpActivity;
+import com.android.hilltrackdoctorfinder.activity.doctor.DoctorActivity;
 import com.android.hilltrackdoctorfinder.adapter.ViewPagerSliderAdapter;
+import com.android.hilltrackdoctorfinder.api.ApiClient;
+import com.android.hilltrackdoctorfinder.api.ApiInterface;
+import com.android.hilltrackdoctorfinder.model.User;
+import com.google.gson.Gson;
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseActivity implements View.OnClickListener {
+    @BindView(R.id.nameTextView)
+    TextView nameTextView;
+    @BindView(R.id.doctorLayout)
+    LinearLayout doctorLayout;
+    @BindView(R.id.reminderLayout)
+    LinearLayout reminderLayout;
+    @BindView(R.id.viewPager_slider)
     ViewPager viewPager_slider;
-    ViewPagerSliderAdapter sliderAdapter;
+    @BindView(R.id.dots_indicator)
     WormDotsIndicator dots_indicator;
+    ViewPagerSliderAdapter sliderAdapter;
     ArrayList banner_data;
     private Runnable runnable_image = null;
     private Handler handler_image = new Handler();
     private final int sliding_time = 3000;
+    private ApiInterface apiInterface;
+    String userMobile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        viewPager_slider = findViewById(R.id.viewPager_slider);
-        dots_indicator = findViewById(R.id.dots_indicator);
+        ButterKnife.bind(this);
         banner_data = new ArrayList();
         sliderAdapter = new ViewPagerSliderAdapter(this, banner_data);
         setSlidingImages();
         startAutoSliderImage();
         viewPager_slider.setAdapter(sliderAdapter);
         dots_indicator.setViewPager(viewPager_slider);
+        userMobile=sharedprefer.getMobile_number();
+        getUserLocation(userMobile);
+        doctorLayout.setOnClickListener(this);
+        reminderLayout.setOnClickListener(this);
     }
     private void setSlidingImages(){
         banner_data.clear();
@@ -55,5 +84,38 @@ public class HomeActivity extends AppCompatActivity {
             handler_image.postDelayed(runnable_image, sliding_time);
         };
         handler_image.postDelayed(runnable_image, sliding_time);
+    }
+    public void getUserLocation(String mobile) {
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<List<User>> call = apiInterface.getProfile(mobile);
+        call.enqueue(new Callback<List<User>>() {
+            @Override
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                if (response.code()==200) {
+                    List<User> body=response.body();
+                    Log.e("user location", new Gson().toJson(body));
+                    nameTextView.setText("Welcome "+body.get(0).getFirst_name()+" "+body.get(0).getLast_name()+"!");
+                    sharedprefer.setLatitude(body.get(0).getLatitude());
+                    sharedprefer.setLongitude(body.get(0).getLongitude());
+                }
+            }
+            @Override
+            public void onFailure(Call<List<User>> call, Throwable t) {
+                Log.e("user location failure",t.getLocalizedMessage());
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view==doctorLayout){
+            Intent intent=new Intent(HomeActivity.this, DoctorActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.enter, R.anim.exit);
+        }else if (view==reminderLayout){
+            Intent intent=new Intent(HomeActivity.this, ReminderActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.enter, R.anim.exit);
+        }
     }
 }

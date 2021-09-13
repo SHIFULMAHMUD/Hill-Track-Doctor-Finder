@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/purple</color>
-    <color name="colorPrimaryDark">@color/purple_dark</color>
+    <color name="colorPrimary">@color/purple_action_bar</color>
+    <color name="colorPrimaryDark">@color/purple</color>
     <color name="colorAccent">#950063</color>
     <color name="colorAccent2">#FFFBEC</color>
     <color name="colorControlActivated">@color/purple</color>

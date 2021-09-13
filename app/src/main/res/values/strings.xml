@@ -17,10 +17,10 @@
     <string name="phone">Phone</string>
     <string name="otp">OTP</string>
     <string name="confirm">Confirm</string>
-    <string name="refer">Refer By</string>
-    <string name="winter_sale">Winter Sale</string>
+    <string name="find_doctor">Find Doctor</string>
+    <string name="nearest_doctor">Nearest Doctor</string>
     <string name="Password">Password</string>
-    <string name="new_Password">New Password</string>
+    <string name="doctor_list">Doctor List</string>
     <string name="set_Password">Set Password</string>
     <string name="send">Send</string>
     <string name="continu">Continue</string>
