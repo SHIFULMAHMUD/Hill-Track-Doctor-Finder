@@ -4,11 +4,6 @@
     package="com.android.hilltrackdoctorfinder"
     android:installLocation="auto">
 
-    <!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the "MyLocation" functionality.
-    -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,7 +14,8 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
-
+        <activity android:name=".activity.BoatActivity"
+            android:screenOrientation="portrait" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -31,7 +27,6 @@
         <activity
             android:name=".activity.doctor.DoctorDetailsActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.MapsActivity"
             android:label="@string/title_activity_maps" />
@@ -60,6 +55,12 @@
             android:name=".activity.doctor.DoctorActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activity.medicine.MedicineActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.medicine.PharmacyDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activity.ReminderActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -68,6 +69,7 @@
         <activity
             android:name=".activity.auth.SignUpActivity"
             android:screenOrientation="portrait" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />

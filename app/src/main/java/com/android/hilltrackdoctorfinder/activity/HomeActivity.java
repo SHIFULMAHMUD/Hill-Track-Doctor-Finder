@@ -21,6 +21,7 @@ import com.android.hilltrackdoctorfinder.R;
 import com.android.hilltrackdoctorfinder.activity.auth.SignInActivity;
 import com.android.hilltrackdoctorfinder.activity.auth.SignUpActivity;
 import com.android.hilltrackdoctorfinder.activity.doctor.DoctorActivity;
+import com.android.hilltrackdoctorfinder.activity.medicine.MedicineActivity;
 import com.android.hilltrackdoctorfinder.adapter.ViewPagerSliderAdapter;
 import com.android.hilltrackdoctorfinder.api.ApiClient;
 import com.android.hilltrackdoctorfinder.api.ApiInterface;
@@ -36,6 +37,10 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     TextView nameTextView;
     @BindView(R.id.doctorLayout)
     LinearLayout doctorLayout;
+    @BindView(R.id.medicineLayout)
+    LinearLayout medicineLayout;
+    @BindView(R.id.boatLayout)
+    LinearLayout boatLayout;
     @BindView(R.id.reminderLayout)
     LinearLayout reminderLayout;
     @BindView(R.id.viewPager_slider)
@@ -63,7 +68,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         userMobile=sharedprefer.getMobile_number();
         getUserLocation(userMobile);
         doctorLayout.setOnClickListener(this);
+        boatLayout.setOnClickListener(this);
         reminderLayout.setOnClickListener(this);
+        medicineLayout.setOnClickListener(this);
     }
     private void setSlidingImages(){
         banner_data.clear();
@@ -110,6 +117,14 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View view) {
         if (view==doctorLayout){
             Intent intent=new Intent(HomeActivity.this, DoctorActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.enter, R.anim.exit);
+        }else if (view==boatLayout){
+            Intent intent=new Intent(HomeActivity.this, BoatActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.enter, R.anim.exit);
+        }else if (view==medicineLayout){
+            Intent intent=new Intent(HomeActivity.this, MedicineActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.enter, R.anim.exit);
         }else if (view==reminderLayout){

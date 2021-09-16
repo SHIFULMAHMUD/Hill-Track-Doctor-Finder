@@ -1,7 +1,9 @@
 package com.android.hilltrackdoctorfinder.api;
 
+import com.android.hilltrackdoctorfinder.model.Boat;
 import com.android.hilltrackdoctorfinder.model.Doctor;
 import com.android.hilltrackdoctorfinder.model.Login;
+import com.android.hilltrackdoctorfinder.model.Pharmacy;
 import com.android.hilltrackdoctorfinder.model.Register;
 import com.android.hilltrackdoctorfinder.model.User;
 
@@ -41,10 +43,22 @@ public interface ApiInterface {
     @GET("get_nearest_doctor.php")
     Call<List<Doctor>> getNearestDoctor();
 
+    @GET("get_nearest_pharmacy.php")
+    Call<List<Pharmacy>> getNearestPharmacy();
+
+    @GET("get_boats.php")
+    Call<List<Boat>> getAllBoats();
+
+    @GET("get_searched_union_boat.php")
+    Call<List<Boat>> getSearchedUnionBoat(@Query("text") String text);
+
     @GET("get_searched_doctor.php")
     Call<List<Doctor>> getSearchedDoctor(@Query("text") String text);
 
     @GET("get_doctor_details.php")
     Call<List<Doctor>> getDoctorDetails(@Query("id") String id);
+
+    @GET("get_pharmacy_details.php")
+    Call<List<Pharmacy>> getPharmacyDetails(@Query("id") String id);
 }
 
