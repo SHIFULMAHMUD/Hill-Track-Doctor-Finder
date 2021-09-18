@@ -20,6 +20,9 @@ import android.widget.TextView;
 import com.android.hilltrackdoctorfinder.R;
 import com.android.hilltrackdoctorfinder.activity.auth.SignInActivity;
 import com.android.hilltrackdoctorfinder.activity.auth.SignUpActivity;
+import com.android.hilltrackdoctorfinder.activity.covid.CovidCenterActivity;
+import com.android.hilltrackdoctorfinder.activity.covid.IsolationCenterActivity;
+import com.android.hilltrackdoctorfinder.activity.covid.VaccineActivity;
 import com.android.hilltrackdoctorfinder.activity.doctor.DoctorActivity;
 import com.android.hilltrackdoctorfinder.activity.medicine.MedicineActivity;
 import com.android.hilltrackdoctorfinder.adapter.ViewPagerSliderAdapter;
@@ -37,6 +40,12 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     TextView nameTextView;
     @BindView(R.id.doctorLayout)
     LinearLayout doctorLayout;
+    @BindView(R.id.covidCenterLayout)
+    LinearLayout covidCenterLayout;
+    @BindView(R.id.isolationCenterLayout)
+    LinearLayout isolationCenterLayout;
+    @BindView(R.id.vaccineLayout)
+    LinearLayout vaccineLayout;
     @BindView(R.id.medicineLayout)
     LinearLayout medicineLayout;
     @BindView(R.id.boatLayout)
@@ -71,6 +80,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         boatLayout.setOnClickListener(this);
         reminderLayout.setOnClickListener(this);
         medicineLayout.setOnClickListener(this);
+        vaccineLayout.setOnClickListener(this);
+        isolationCenterLayout.setOnClickListener(this);
+        covidCenterLayout.setOnClickListener(this);
     }
     private void setSlidingImages(){
         banner_data.clear();
@@ -129,6 +141,18 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             overridePendingTransition(R.anim.enter, R.anim.exit);
         }else if (view==reminderLayout){
             Intent intent=new Intent(HomeActivity.this, ReminderActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.enter, R.anim.exit);
+        }else if (view==vaccineLayout){
+            Intent intent=new Intent(HomeActivity.this, VaccineActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.enter, R.anim.exit);
+        }else if (view==covidCenterLayout){
+            Intent intent=new Intent(HomeActivity.this, CovidCenterActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.enter, R.anim.exit);
+        }else if (view==isolationCenterLayout){
+            Intent intent=new Intent(HomeActivity.this, IsolationCenterActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.enter, R.anim.exit);
         }

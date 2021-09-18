@@ -232,6 +232,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:orientation="horizontal">
             <LinearLayout
+                android:id="@+id/vaccineLayout"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -256,6 +257,7 @@
                 android:layout_height="100dp"
                 android:background="@color/grey_10"/>
             <LinearLayout
+                android:id="@+id/covidCenterLayout"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -281,6 +283,7 @@
                 android:layout_height="100dp"
                 android:background="@color/grey_10"/>
             <LinearLayout
+                android:id="@+id/isolationCenterLayout"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"

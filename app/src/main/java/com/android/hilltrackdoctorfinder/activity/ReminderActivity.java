@@ -5,15 +5,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.allyants.notifyme.NotifyMe;
 import com.android.hilltrackdoctorfinder.R;
+import com.google.android.material.textfield.TextInputEditText;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import java.util.Calendar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import es.dmoral.toasty.Toasty;
 
 public class ReminderActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
@@ -21,19 +25,27 @@ public class ReminderActivity extends AppCompatActivity implements DatePickerDia
     Calendar now = Calendar.getInstance();
     TimePickerDialog tpd;
     DatePickerDialog dpd;
-    EditText etTitle,etContent;
-
+    TextInputEditText etTitle,etContent;
+    TextView title;
+    ImageButton back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder);
-        Button btnNotify = findViewById(R.id.btnNotify);
         etTitle = findViewById(R.id.etTitle);
         etContent = findViewById(R.id.etContent);
+        title = findViewById(R.id.title);
+        back = findViewById(R.id.back);
+        title.setText("Set Reminder");
+        CardView btnNotify = findViewById(R.id.cardViewAdd);
+        CardView btnCancel = findViewById(R.id.cardViewCancel);
 
-        Button btnCancel = findViewById(R.id.btnCancel);
-
-
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         dpd = DatePickerDialog.newInstance(
                 ReminderActivity.this,
                 now.get(Calendar.YEAR),

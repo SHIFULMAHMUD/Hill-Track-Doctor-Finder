@@ -1,6 +1,7 @@
 package com.android.hilltrackdoctorfinder.api;
 
 import com.android.hilltrackdoctorfinder.model.Boat;
+import com.android.hilltrackdoctorfinder.model.Center;
 import com.android.hilltrackdoctorfinder.model.Doctor;
 import com.android.hilltrackdoctorfinder.model.Login;
 import com.android.hilltrackdoctorfinder.model.Pharmacy;
@@ -43,6 +44,12 @@ public interface ApiInterface {
     @GET("get_nearest_doctor.php")
     Call<List<Doctor>> getNearestDoctor();
 
+    @GET("covid_center.php")
+    Call<List<Center>> getNearestCovidCenter();
+
+    @GET("isolation_center.php")
+    Call<List<Center>> getNearestIsolationCenter();
+
     @GET("get_nearest_pharmacy.php")
     Call<List<Pharmacy>> getNearestPharmacy();
 
@@ -60,5 +67,11 @@ public interface ApiInterface {
 
     @GET("get_pharmacy_details.php")
     Call<List<Pharmacy>> getPharmacyDetails(@Query("id") String id);
+
+    @GET("get_covid_center.php")
+    Call<List<Center>> getCovidCenterInfo(@Query("id") String id);
+
+    @GET("get_isolation_center.php")
+    Call<List<Center>> getIsolationCenter(@Query("id") String id);
 }
 
