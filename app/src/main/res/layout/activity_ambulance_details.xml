@@ -16,10 +16,10 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/userImageView"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/ic_center"
+                android:id="@+id/ambulanceImageView"
+                android:layout_width="250dp"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_ambulance"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -29,9 +29,9 @@
                 android:id="@+id/nameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/userImageView"
-                app:layout_constraintStart_toStartOf="@+id/userImageView"
-                app:layout_constraintEnd_toEndOf="@+id/userImageView"
+                app:layout_constraintTop_toBottomOf="@+id/ambulanceImageView"
+                app:layout_constraintStart_toStartOf="@+id/ambulanceImageView"
+                app:layout_constraintEnd_toEndOf="@+id/ambulanceImageView"
                 android:textSize="@dimen/_17_sp"
                 android:textStyle="bold"
                 android:layout_marginStart="@dimen/_20_dp"
@@ -102,15 +102,15 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14_sp"/>
                 <TextView
-                    android:id="@+id/headingDistanceTv"
+                    android:id="@+id/headingUnionTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Distance"
+                    android:text="Union"
                     android:textColor="@color/grey_60"
                     android:textSize="@dimen/_12_sp"
                     android:layout_marginTop="@dimen/_10_dp"/>
                 <TextView
-                    android:id="@+id/distanceTextView"
+                    android:id="@+id/unionTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5_dp"
@@ -131,22 +131,7 @@
                     android:layout_marginTop="@dimen/_5_dp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14_sp"/>
-                <TextView
-                    android:id="@+id/headingWebsiteTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Website"
-                    android:textColor="@color/grey_60"
-                    android:textSize="@dimen/_12_sp"
-                    android:layout_marginTop="@dimen/_10_dp"/>
-                <TextView
-                    android:id="@+id/websiteTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5_dp"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14_sp"
-                    android:autoLink="web"/>
+
             </LinearLayout>
             <TextView
                 android:id="@+id/contactViaTextView"

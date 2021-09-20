@@ -43,7 +43,7 @@ public class BoatActivity extends BaseActivity implements View.OnClickListener, 
     private RecyclerView.LayoutManager layoutManager;
     private BoatListAdapter adapter;
     private ApiInterface apiInterface;
-    String[] union = { "Select Union","Kaptai", "Chandraghona", "Chitmorom", "Raikhali", "Waggya"};
+    String[] union = {"Kaptai", "Chandraghona", "Chitmorom", "Raikhali", "Waggya"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

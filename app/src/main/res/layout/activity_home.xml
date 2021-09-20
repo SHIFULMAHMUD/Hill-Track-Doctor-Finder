@@ -330,6 +330,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:orientation="horizontal">
             <LinearLayout
+                android:id="@+id/profileLayout"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -354,6 +355,7 @@
                 android:layout_height="100dp"
                 android:background="@color/grey_10"/>
             <LinearLayout
+                android:id="@+id/ambulanceLayout"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -379,6 +381,7 @@
                 android:layout_height="100dp"
                 android:background="@color/grey_10"/>
             <LinearLayout
+                android:id="@+id/bloodBankLayout"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -416,6 +419,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:orientation="horizontal">
             <LinearLayout
+                android:id="@+id/hospitalLayout"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -440,6 +444,7 @@
                 android:layout_height="100dp"
                 android:background="@color/grey_10"/>
             <LinearLayout
+                android:id="@+id/historyLayout"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -465,6 +470,7 @@
                 android:layout_height="100dp"
                 android:background="@color/grey_10"/>
             <LinearLayout
+                android:id="@+id/wishListLayout"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"

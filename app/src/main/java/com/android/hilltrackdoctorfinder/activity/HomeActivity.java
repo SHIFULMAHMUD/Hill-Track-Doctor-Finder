@@ -18,13 +18,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.hilltrackdoctorfinder.R;
+import com.android.hilltrackdoctorfinder.activity.ambulance.AmbulanceActivity;
 import com.android.hilltrackdoctorfinder.activity.auth.SignInActivity;
 import com.android.hilltrackdoctorfinder.activity.auth.SignUpActivity;
+import com.android.hilltrackdoctorfinder.activity.bloodbank.BloodBankActivity;
 import com.android.hilltrackdoctorfinder.activity.covid.CovidCenterActivity;
 import com.android.hilltrackdoctorfinder.activity.covid.IsolationCenterActivity;
 import com.android.hilltrackdoctorfinder.activity.covid.VaccineActivity;
 import com.android.hilltrackdoctorfinder.activity.doctor.DoctorActivity;
+import com.android.hilltrackdoctorfinder.activity.hospital.HospitalActivity;
 import com.android.hilltrackdoctorfinder.activity.medicine.MedicineActivity;
+import com.android.hilltrackdoctorfinder.activity.profile.ProfileActivity;
 import com.android.hilltrackdoctorfinder.adapter.ViewPagerSliderAdapter;
 import com.android.hilltrackdoctorfinder.api.ApiClient;
 import com.android.hilltrackdoctorfinder.api.ApiInterface;
@@ -38,6 +42,14 @@ import java.util.List;
 public class HomeActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.nameTextView)
     TextView nameTextView;
+    @BindView(R.id.wishListLayout)
+    LinearLayout wishListLayout;
+    @BindView(R.id.historyLayout)
+    LinearLayout historyLayout;
+    @BindView(R.id.profileLayout)
+    LinearLayout profileLayout;
+    @BindView(R.id.bloodBankLayout)
+    LinearLayout bloodBankLayout;
     @BindView(R.id.doctorLayout)
     LinearLayout doctorLayout;
     @BindView(R.id.covidCenterLayout)
@@ -48,8 +60,12 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     LinearLayout vaccineLayout;
     @BindView(R.id.medicineLayout)
     LinearLayout medicineLayout;
+    @BindView(R.id.hospitalLayout)
+    LinearLayout hospitalLayout;
     @BindView(R.id.boatLayout)
     LinearLayout boatLayout;
+    @BindView(R.id.ambulanceLayout)
+    LinearLayout ambulanceLayout;
     @BindView(R.id.reminderLayout)
     LinearLayout reminderLayout;
     @BindView(R.id.viewPager_slider)
@@ -83,6 +99,12 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         vaccineLayout.setOnClickListener(this);
         isolationCenterLayout.setOnClickListener(this);
         covidCenterLayout.setOnClickListener(this);
+        ambulanceLayout.setOnClickListener(this);
+        profileLayout.setOnClickListener(this);
+        bloodBankLayout.setOnClickListener(this);
+        hospitalLayout.setOnClickListener(this);
+        historyLayout.setOnClickListener(this);
+        wishListLayout.setOnClickListener(this);
     }
     private void setSlidingImages(){
         banner_data.clear();
@@ -155,6 +177,30 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             Intent intent=new Intent(HomeActivity.this, IsolationCenterActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.enter, R.anim.exit);
+        }else if (view==ambulanceLayout){
+            Intent intent=new Intent(HomeActivity.this, AmbulanceActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.enter, R.anim.exit);
+        }else if (view==profileLayout){
+            Intent intent=new Intent(HomeActivity.this, ProfileActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.enter, R.anim.exit);
+        }else if (view==bloodBankLayout){
+            Intent intent=new Intent(HomeActivity.this, BloodBankActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.enter, R.anim.exit);
+        }else if (view==hospitalLayout){
+            Intent intent=new Intent(HomeActivity.this, HospitalActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.enter, R.anim.exit);
+        }else if (view==historyLayout){
+//            Intent intent=new Intent(HomeActivity.this, AmbulanceActivity.class);
+//            startActivity(intent);
+//            overridePendingTransition(R.anim.enter, R.anim.exit);
+        }else if (view==wishListLayout){
+//            Intent intent=new Intent(HomeActivity.this, AmbulanceActivity.class);
+//            startActivity(intent);
+//            overridePendingTransition(R.anim.enter, R.anim.exit);
         }
     }
 }

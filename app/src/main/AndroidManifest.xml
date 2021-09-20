@@ -14,7 +14,10 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
-        <activity android:name=".activity.BoatActivity"
+        <activity android:name=".activity.profile.ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BoatActivity"
             android:screenOrientation="portrait" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -38,6 +41,24 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.covid.IsolationCenterDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ambulance.AmbulanceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ambulance.AmbulanceDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.bloodbank.BloodBankActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.bloodbank.BloodBankDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.hospital.HospitalActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.hospital.HospitalDetailsActivity"
             android:screenOrientation="portrait" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -81,6 +102,7 @@
         <activity
             android:name=".activity.covid.VaccineActivity"
             android:screenOrientation="portrait" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />

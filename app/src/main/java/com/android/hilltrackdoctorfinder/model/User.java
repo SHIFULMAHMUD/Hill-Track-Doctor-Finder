@@ -11,12 +11,20 @@ public class User {
     public String mobile;
     @SerializedName("password")
     public String password;
+    @SerializedName("address")
+    public String address;
+    @SerializedName("blood")
+    public String blood;
     @SerializedName("latitude")
     public String latitude;
     @SerializedName("longitude")
     public String longitude;
     @SerializedName("token")
     public String token;
+    @SerializedName("value")
+    public String value;
+    @SerializedName("message")
+    public String message;
 
     public String getFirst_name() {
         return first_name;
@@ -46,4 +54,19 @@ public class User {
         return token;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public String getBlood() {
+        return blood;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public String getMessage() {
+        return message;
+    }
 }

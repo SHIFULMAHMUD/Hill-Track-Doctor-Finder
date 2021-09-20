@@ -10,14 +10,14 @@ import androidx.fragment.app.FragmentPagerAdapter;
 /**
  * Class that stores fragments for tabs
  */
-public class MedicinePagerAdapter extends FragmentPagerAdapter {
+public class PagerAdapter extends FragmentPagerAdapter {
 
-    private static final String TAG = "MedicinePagerAdapter";
+    private static final String TAG = "PagerAdapter";
 
     private final List<Fragment> mFragmentList = new ArrayList<>();
 
 
-    public MedicinePagerAdapter(FragmentManager fm) {
+    public PagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
