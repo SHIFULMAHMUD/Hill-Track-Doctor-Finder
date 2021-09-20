@@ -84,6 +84,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:background="@drawable/ripple_cardview_purple"
                         android:orientation="vertical">
                         <ImageView
                             android:layout_width="50dp"
@@ -104,6 +105,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:background="@drawable/ripple_cardview_purple"
                         android:orientation="vertical">
                         <ImageView
                             android:layout_width="50dp"
@@ -125,6 +127,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:background="@drawable/ripple_cardview_purple"
                         android:orientation="vertical">
                         <ImageView
                             android:layout_width="50dp"
@@ -145,6 +148,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:background="@drawable/ripple_cardview_purple"
                         android:orientation="vertical">
                         <ImageView
                             android:layout_width="50dp"
@@ -236,6 +240,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:background="@drawable/ripple_cardview_purple"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <ImageView
@@ -261,6 +266,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:background="@drawable/ripple_cardview_purple"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <ImageView
@@ -287,6 +293,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:background="@drawable/ripple_cardview_purple"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <ImageView
@@ -335,6 +342,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:layout_height="match_parent"
+                android:background="@drawable/ripple_cardview_purple"
                 android:orientation="vertical">
                 <ImageView
                     android:layout_width="50dp"
@@ -360,6 +368,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:layout_height="match_parent"
+                android:background="@drawable/ripple_cardview_purple"
                 android:orientation="vertical">
                 <ImageView
                     android:layout_width="50dp"
@@ -386,6 +395,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:layout_height="match_parent"
+                android:background="@drawable/ripple_cardview_purple"
                 android:orientation="vertical">
                 <ImageView
                     android:layout_width="50dp"
@@ -423,6 +433,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:background="@drawable/ripple_cardview_purple"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <ImageView
@@ -448,6 +459,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:background="@drawable/ripple_cardview_purple"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <ImageView
@@ -474,6 +486,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:background="@drawable/ripple_cardview_purple"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <ImageView

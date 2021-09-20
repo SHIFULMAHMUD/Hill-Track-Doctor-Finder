@@ -37,13 +37,13 @@ public class DoctorActivity extends BaseActivity implements View.OnClickListener
     }
     private void setupViewPager() {
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new NearestDoctorFragment()); //index 0
-        adapter.addFragment(new DoctorListFragment()); //index 1
+        adapter.addFragment(new DoctorListFragment()); //index 0
+        adapter.addFragment(new NearestDoctorFragment()); //index 1
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabGravity(tabLayout.GRAVITY_FILL);
-        tabLayout.getTabAt(0).setText(R.string.nearest_doctor);
-        tabLayout.getTabAt(1).setText(R.string.doctor_list);
+        tabLayout.getTabAt(0).setText(R.string.doctor_list);
+        tabLayout.getTabAt(1).setText(R.string.nearest_doctor);
     }
     //for back button
     @Override

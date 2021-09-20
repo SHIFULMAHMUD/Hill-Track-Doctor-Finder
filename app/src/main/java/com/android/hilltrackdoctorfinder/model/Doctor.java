@@ -21,6 +21,14 @@ public class Doctor {
     public String latitude;
     @SerializedName("longitude")
     public String longitude;
+    @SerializedName("email")
+    public String email;
+    @SerializedName("availability")
+    public String availability;
+    @SerializedName("consultation_time")
+    public String consultation_time;
+    @SerializedName("join_date")
+    public String join_date;
 
     public String getId() {
         return id;
@@ -56,5 +64,21 @@ public class Doctor {
 
     public String getLongitude() {
         return longitude;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getAvailability() {
+        return availability;
+    }
+
+    public String getConsultation_time() {
+        return consultation_time;
+    }
+
+    public String getJoin_date() {
+        return join_date;
     }
 }

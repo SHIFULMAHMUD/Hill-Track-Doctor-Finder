@@ -64,7 +64,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
-        title.setText("Profile Dashboard");
+        title.setText("Manage Profile");
         back.setOnClickListener(this);
         changePhotoTextView.setOnClickListener(this);
         editProfileTextView.setOnClickListener(this);

@@ -8,6 +8,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -36,6 +37,14 @@ public class DoctorDetailsActivity extends BaseActivity implements View.OnClickL
     CircularImageView userImageView;
     @BindView(R.id.nameTextView)
     TextView nameTextView;
+    @BindView(R.id.joinDateTextView)
+    TextView joinDateTextView;
+    @BindView(R.id.consultTimeTextView)
+    TextView consultTimeTextView;
+    @BindView(R.id.availabilityTextView)
+    TextView availabilityTextView;
+    @BindView(R.id.emailTextView)
+    TextView emailTextView;
     @BindView(R.id.qualificationTextView)
     TextView qualificationTextView;
     @BindView(R.id.specialistTextView)
@@ -52,6 +61,8 @@ public class DoctorDetailsActivity extends BaseActivity implements View.OnClickL
     ImageButton phoneImageButton;
     @BindView(R.id.whatsappImageButton)
     ImageButton whatsappImageButton;
+    @BindView(R.id.emailImageButton)
+    ImageButton emailImageButton;
     @BindView(R.id.title)
     TextView title;
     @BindView(R.id.back)
@@ -83,6 +94,7 @@ public class DoctorDetailsActivity extends BaseActivity implements View.OnClickL
         back.setOnClickListener(this);
         phoneImageButton.setOnClickListener(this);
         whatsappImageButton.setOnClickListener(this);
+        emailImageButton.setOnClickListener(this);
     }
 
     private void getDoctorProfileInfo(String id) {
@@ -101,6 +113,10 @@ public class DoctorDetailsActivity extends BaseActivity implements View.OnClickL
                     specialistTextView.setText(body.get(0).getSpecialist());
                     mobileTextView.setText(body.get(0).getMobile());
                     addressTextView.setText(body.get(0).getAddress());
+                    availabilityTextView.setText(body.get(0).getAvailability());
+                    emailTextView.setText(body.get(0).getEmail());
+                    consultTimeTextView.setText(body.get(0).getConsultation_time());
+                    joinDateTextView.setText(body.get(0).getJoin_date());
                 }
             }
             @Override
@@ -121,6 +137,15 @@ public class DoctorDetailsActivity extends BaseActivity implements View.OnClickL
         }
 
         return appsInstall;
+    }
+    public static void sendEmail(Context context, String[] recipientList,
+                                 String title, String subject, String body) {
+        Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+        emailIntent.setType("plain/text");
+        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, recipientList);
+        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
+        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, body);
+        context.startActivity(Intent.createChooser(emailIntent, title));
     }
 
     @Override
@@ -147,6 +172,9 @@ public class DoctorDetailsActivity extends BaseActivity implements View.OnClickL
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
                 }
             }
+        }else if (view==emailImageButton){
+            sendEmail(context, new String[]{emailTextView.getText().toString()}, "",
+                    "", "");
         }
     }
 }

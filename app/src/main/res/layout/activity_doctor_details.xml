@@ -115,6 +115,48 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Email Address"
+                    android:textColor="@color/grey_60"
+                    android:textSize="@dimen/_12_sp"
+                    android:layout_marginTop="@dimen/_10_dp"/>
+                <TextView
+                    android:id="@+id/emailTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5_dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14_sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Availability"
+                    android:textColor="@color/grey_60"
+                    android:textSize="@dimen/_12_sp"
+                    android:layout_marginTop="@dimen/_10_dp"/>
+                <TextView
+                    android:id="@+id/availabilityTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5_dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14_sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Consultation Time"
+                    android:textColor="@color/grey_60"
+                    android:textSize="@dimen/_12_sp"
+                    android:layout_marginTop="@dimen/_10_dp"/>
+                <TextView
+                    android:id="@+id/consultTimeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5_dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14_sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Full Address"
                     android:textColor="@color/grey_60"
                     android:textSize="@dimen/_12_sp"
@@ -136,6 +178,20 @@
                     android:layout_marginTop="@dimen/_10_dp"/>
                 <TextView
                     android:id="@+id/distanceTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5_dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14_sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Joining Date"
+                    android:textColor="@color/grey_60"
+                    android:textSize="@dimen/_12_sp"
+                    android:layout_marginTop="@dimen/_10_dp"/>
+                <TextView
+                    android:id="@+id/joinDateTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5_dp"
@@ -184,6 +240,15 @@
                 app:layout_constraintTop_toTopOf="@+id/contactViaTextView"
                 app:layout_constraintBottom_toBottomOf="@+id/contactViaTextView"
                 android:background="@drawable/ic_whatsapp"/>
+            <ImageButton
+                android:id="@+id/emailImageButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="@dimen/_30_dp"
+                app:layout_constraintStart_toEndOf="@+id/whatsappImageButton"
+                app:layout_constraintTop_toTopOf="@+id/contactViaTextView"
+                app:layout_constraintBottom_toBottomOf="@+id/contactViaTextView"
+                android:background="@drawable/ic_email"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
