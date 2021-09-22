@@ -9,6 +9,7 @@ import com.android.hilltrackdoctorfinder.model.Hospital;
 import com.android.hilltrackdoctorfinder.model.Login;
 import com.android.hilltrackdoctorfinder.model.Pharmacy;
 import com.android.hilltrackdoctorfinder.model.Register;
+import com.android.hilltrackdoctorfinder.model.Review;
 import com.android.hilltrackdoctorfinder.model.User;
 
 import java.util.List;
@@ -54,6 +55,15 @@ public interface ApiInterface {
             @Field("address") String address,
             @Field("blood") String blood);
 
+    @FormUrlEncoded
+    @POST("review.php")
+    Call<Review> review(
+            @Field("doc_id") String doc_id,
+            @Field("review") String review,
+            @Field("rating") String rating,
+            @Field("reviewer") String reviewer,
+            @Field("reviewer_mobile") String reviewer_mobile);
+
     @GET("get_nearest_doctor.php")
     Call<List<Doctor>> getNearestDoctor();
 
@@ -86,6 +96,9 @@ public interface ApiInterface {
 
     @GET("get_doctor_details.php")
     Call<List<Doctor>> getDoctorDetails(@Query("id") String id);
+
+    @GET("get_doctor_review.php")
+    Call<List<Review>> getDoctorReview(@Query("doc_id") String doc_id);
 
     @GET("get_pharmacy_details.php")
     Call<List<Pharmacy>> getPharmacyDetails(@Query("id") String id);

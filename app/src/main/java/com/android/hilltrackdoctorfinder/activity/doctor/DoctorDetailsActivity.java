@@ -8,35 +8,55 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.android.hilltrackdoctorfinder.R;
 import com.android.hilltrackdoctorfinder.activity.BaseActivity;
+import com.android.hilltrackdoctorfinder.activity.HomeActivity;
+import com.android.hilltrackdoctorfinder.activity.ReminderActivity;
+import com.android.hilltrackdoctorfinder.activity.profile.ProfileActivity;
 import com.android.hilltrackdoctorfinder.api.ApiClient;
 import com.android.hilltrackdoctorfinder.api.ApiInterface;
 import com.android.hilltrackdoctorfinder.model.Doctor;
+import com.android.hilltrackdoctorfinder.model.Review;
 import com.android.hilltrackdoctorfinder.model.User;
 import com.android.hilltrackdoctorfinder.utils.Tools;
 import com.android.hilltrackdoctorfinder.utils.Urls;
 import com.bumptech.glide.Glide;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class DoctorDetailsActivity extends BaseActivity implements View.OnClickListener {
+    RatingBar ratingbar;
+    String rating;
+    @BindView(R.id.ratingBarProfile)
+    RatingBar ratingBarProfile;
     @BindView(R.id.userImageView)
     CircularImageView userImageView;
     @BindView(R.id.nameTextView)
     TextView nameTextView;
+    @BindView(R.id.ratingTv)
+    TextView ratingTv;
+    @BindView(R.id.seeReviewTextView)
+    TextView seeReviewTextView;
     @BindView(R.id.joinDateTextView)
     TextView joinDateTextView;
     @BindView(R.id.consultTimeTextView)
@@ -63,6 +83,8 @@ public class DoctorDetailsActivity extends BaseActivity implements View.OnClickL
     ImageButton whatsappImageButton;
     @BindView(R.id.emailImageButton)
     ImageButton emailImageButton;
+    @BindView(R.id.reviewImageButton)
+    ImageButton reviewImageButton;
     @BindView(R.id.title)
     TextView title;
     @BindView(R.id.back)
@@ -80,21 +102,26 @@ public class DoctorDetailsActivity extends BaseActivity implements View.OnClickL
 
         if (id!=null)
         {
+            reviewImageButton.setVisibility(View.GONE);
             String data[]=id.split(",");
             distance=data[1];
             distanceTextView.setText(distance+" Km");
             getDoctorProfileInfo(data[0]);
+            getReviewInfo(data[0]);
         }
         if (doctor_id!=null)
         {
             headingDistanceTv.setVisibility(View.GONE);
             distanceTextView.setVisibility(View.GONE);
             getDoctorProfileInfo(doctor_id);
+            getReviewInfo(doctor_id);
         }
         back.setOnClickListener(this);
         phoneImageButton.setOnClickListener(this);
         whatsappImageButton.setOnClickListener(this);
         emailImageButton.setOnClickListener(this);
+        reviewImageButton.setOnClickListener(this);
+        seeReviewTextView.setOnClickListener(this);
     }
 
     private void getDoctorProfileInfo(String id) {
@@ -125,6 +152,30 @@ public class DoctorDetailsActivity extends BaseActivity implements View.OnClickL
             }
         });
     }
+    private void getReviewInfo(String id) {
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<List<Review>> call = apiInterface.getDoctorReview(id);
+        call.enqueue(new Callback<List<Review>>() {
+            @Override
+            public void onResponse(Call<List<Review>> call, Response<List<Review>> response) {
+                if (response.code()==200) {
+                    List<Review> body=response.body();
+                    if (!body.isEmpty())
+                    {
+                        float rating=0;
+                        for (int i=0;i<body.size();i++)
+                        {
+                            rating+=Float.parseFloat(body.get(i).getRating());
+                        }
+                        ratingBarProfile.setRating(rating/body.size());
+                        ratingTv.setText(Float.toString(Float.parseFloat(new DecimalFormat("#.#").format(rating/body.size()))));
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Review>> call, Throwable t) {}
+        });
+    }
     private boolean appInstalledorNot(String path) {
         PackageManager packageManager = DoctorDetailsActivity.this.getPackageManager();
         boolean appsInstall;
@@ -146,6 +197,69 @@ public class DoctorDetailsActivity extends BaseActivity implements View.OnClickL
         emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
         emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, body);
         context.startActivity(Intent.createChooser(emailIntent, title));
+    }
+    private void showRatingDialog() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
+        dialog.setContentView(R.layout.rating_dialog);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        dialog.setCancelable(false);
+
+        ratingbar=dialog.findViewById(R.id.ratingBar);
+
+        final TextInputEditText review = dialog.findViewById(R.id.reviewEditText);
+        ratingbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+
+            @Override
+            public void onRatingChanged(RatingBar arg0, float rateValue, boolean arg2) {
+                rating = String.valueOf(rateValue);
+            }
+        });
+
+        (dialog.findViewById(R.id.linearLayoutSubmit)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (review.getText().toString().isEmpty()){
+                    Tools.setErrorToast(DoctorDetailsActivity.this,"Write a Review");
+                }else {
+                    loading.start();
+                    apiInterface = ApiClient.getClient().create(ApiInterface.class);
+                    Call<Review> call = apiInterface.review(doctor_id,review.getText().toString(),rating,sharedprefer.getFirst_name(),sharedprefer.getMobile_number());
+                    call.enqueue(new Callback<Review>() {
+                        @Override
+                        public void onResponse(Call<Review> call, Response<Review> response) {
+                            loading.end();
+                            if (response.code()==200) {
+                                Review body=response.body();
+                                if (body.getValue().equals("success"))
+                                {
+                                    Tools.setSuccessToast(DoctorDetailsActivity.this,body.getMessage());
+                                    dialog.dismiss();
+                                }
+                                else if (body.getValue().equals("failure"))
+                                {
+                                    Tools.setErrorToast(DoctorDetailsActivity.this,body.getMessage());
+                                }
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call<Review> call, Throwable t) {
+                            loading.end();
+                        }
+                    });
+                }
+            }
+        });
+
+
+        (dialog.findViewById(R.id.id_btn_purchase_voucher_dialog_cross)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 
     @Override
@@ -175,6 +289,24 @@ public class DoctorDetailsActivity extends BaseActivity implements View.OnClickL
         }else if (view==emailImageButton){
             sendEmail(context, new String[]{emailTextView.getText().toString()}, "",
                     "", "");
+        }else if (view==reviewImageButton){
+            showRatingDialog();
+        }else if (view==seeReviewTextView){
+            if (id!=null)
+            {
+                String data[]=id.split(",");
+                Intent intent=new Intent(DoctorDetailsActivity.this, DoctorReviewActivity.class);
+                intent.putExtra("id",data[0]);
+                startActivity(intent);
+                overridePendingTransition(R.anim.enter, R.anim.exit);
+            }
+            if (doctor_id!=null)
+            {
+                Intent intent=new Intent(DoctorDetailsActivity.this, DoctorReviewActivity.class);
+                intent.putExtra("id",doctor_id);
+                startActivity(intent);
+                overridePendingTransition(R.anim.enter, R.anim.exit);
+            }
         }
     }
 }

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.hospital.HospitalActivity">
+    tools:context=".activity.hospital.HospitalActivity"
+    android:background="@color/white">
     <include layout="@layout/toolbar_back"/>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/simpleTabLayout"

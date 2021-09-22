@@ -16,6 +16,8 @@
         tools:targetApi="m">
         <activity android:name=".activity.profile.ProfileActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.doctor.DoctorReviewActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.BoatActivity"
             android:screenOrientation="portrait" />
