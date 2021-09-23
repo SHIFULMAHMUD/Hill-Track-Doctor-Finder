@@ -18,6 +18,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".activity.doctor.DoctorReviewActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.WishListActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.BoatActivity"
             android:screenOrientation="portrait" />

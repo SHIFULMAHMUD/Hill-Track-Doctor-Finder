@@ -17,12 +17,13 @@
             android:layout_height="match_parent">
 
             <ImageButton
+                android:id="@+id/favouriteImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_margin="@dimen/_30_dp"
-                android:background="@drawable/ic_edit_profile"/>
+                android:background="@drawable/ic_favourite_outline"/>
             <com.mikhaellopez.circularimageview.CircularImageView
                 android:id="@+id/userImageView"
                 android:layout_width="130dp"

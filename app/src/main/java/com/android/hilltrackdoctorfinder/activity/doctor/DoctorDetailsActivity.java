@@ -34,6 +34,7 @@ import com.android.hilltrackdoctorfinder.api.ApiInterface;
 import com.android.hilltrackdoctorfinder.model.Doctor;
 import com.android.hilltrackdoctorfinder.model.Review;
 import com.android.hilltrackdoctorfinder.model.User;
+import com.android.hilltrackdoctorfinder.model.Wishlist;
 import com.android.hilltrackdoctorfinder.utils.Tools;
 import com.android.hilltrackdoctorfinder.utils.Urls;
 import com.bumptech.glide.Glide;
@@ -85,6 +86,8 @@ public class DoctorDetailsActivity extends BaseActivity implements View.OnClickL
     ImageButton emailImageButton;
     @BindView(R.id.reviewImageButton)
     ImageButton reviewImageButton;
+    @BindView(R.id.favouriteImageButton)
+    ImageButton favouriteImageButton;
     @BindView(R.id.title)
     TextView title;
     @BindView(R.id.back)
@@ -103,11 +106,13 @@ public class DoctorDetailsActivity extends BaseActivity implements View.OnClickL
         if (id!=null)
         {
             reviewImageButton.setVisibility(View.GONE);
+            favouriteImageButton.setVisibility(View.GONE);
             String data[]=id.split(",");
             distance=data[1];
             distanceTextView.setText(distance+" Km");
             getDoctorProfileInfo(data[0]);
             getReviewInfo(data[0]);
+            getWishListInfo(data[0],sharedprefer.getMobile_number());
         }
         if (doctor_id!=null)
         {
@@ -115,6 +120,7 @@ public class DoctorDetailsActivity extends BaseActivity implements View.OnClickL
             distanceTextView.setVisibility(View.GONE);
             getDoctorProfileInfo(doctor_id);
             getReviewInfo(doctor_id);
+            getWishListInfo(doctor_id,sharedprefer.getMobile_number());
         }
         back.setOnClickListener(this);
         phoneImageButton.setOnClickListener(this);
@@ -122,6 +128,7 @@ public class DoctorDetailsActivity extends BaseActivity implements View.OnClickL
         emailImageButton.setOnClickListener(this);
         reviewImageButton.setOnClickListener(this);
         seeReviewTextView.setOnClickListener(this);
+        favouriteImageButton.setOnClickListener(this);
     }
 
     private void getDoctorProfileInfo(String id) {
@@ -261,6 +268,55 @@ public class DoctorDetailsActivity extends BaseActivity implements View.OnClickL
         });
         dialog.show();
     }
+    private void getWishListInfo(String id,String mobile) {
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<List<Wishlist>> call = apiInterface.getWishlistInfo(id,mobile);
+        call.enqueue(new Callback<List<Wishlist>>() {
+            @Override
+            public void onResponse(Call<List<Wishlist>> call, Response<List<Wishlist>> response) {
+                if (response.code()==200) {
+                    List<Wishlist> body=response.body();
+                    if (!body.isEmpty()){
+                        if (body.get(0).getStatus().equals("1")){
+                            favouriteImageButton.setImageResource(R.drawable.ic_favourite);
+                        }else {favouriteImageButton.setImageResource(R.drawable.ic_favourite_outline);}
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Wishlist>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void addWishListInfo() {
+        loading.start();
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<Wishlist> call = apiInterface.addToWishList(doctor_id,nameTextView.getText().toString(),specialistTextView.getText().toString(),sharedprefer.getMobile_number(),ratingTv.getText().toString(),"1");
+        call.enqueue(new Callback<Wishlist>() {
+            @Override
+            public void onResponse(Call<Wishlist> call, Response<Wishlist> response) {
+                if (response.code()==200) {
+                    loading.end();
+                    Wishlist body=response.body();
+                    if (body.getValue().equals("success"))
+                    {
+                        favouriteImageButton.setImageResource(R.drawable.ic_favourite);
+                        Tools.setSuccessToast(DoctorDetailsActivity.this,body.getMessage());
+                    }
+                    else if (body.getValue().equals("failure"))
+                    {
+                        Tools.setErrorToast(DoctorDetailsActivity.this,body.getMessage());
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<Wishlist> call, Throwable t) {
+                loading.end();
+            }
+        });
+    }
 
     @Override
     public void onClick(View view) {
@@ -307,6 +363,8 @@ public class DoctorDetailsActivity extends BaseActivity implements View.OnClickL
                 startActivity(intent);
                 overridePendingTransition(R.anim.enter, R.anim.exit);
             }
+        }else if (view==favouriteImageButton){
+            addWishListInfo();
         }
     }
 }

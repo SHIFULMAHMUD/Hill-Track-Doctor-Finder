@@ -11,6 +11,7 @@ import com.android.hilltrackdoctorfinder.model.Pharmacy;
 import com.android.hilltrackdoctorfinder.model.Register;
 import com.android.hilltrackdoctorfinder.model.Review;
 import com.android.hilltrackdoctorfinder.model.User;
+import com.android.hilltrackdoctorfinder.model.Wishlist;
 
 import java.util.List;
 
@@ -64,6 +65,23 @@ public interface ApiInterface {
             @Field("reviewer") String reviewer,
             @Field("reviewer_mobile") String reviewer_mobile);
 
+    @FormUrlEncoded
+    @POST("add_to_wishlist.php")
+    Call<Wishlist> addToWishList(
+            @Field("doc_id") String doc_id,
+            @Field("doc_name") String doc_name,
+            @Field("doc_specialty") String doc_specialty,
+            @Field("user_mobile") String user_mobile,
+            @Field("rating") String rating,
+            @Field("status") String status);
+
+    @FormUrlEncoded
+    @POST("update_wishlist.php")
+    Call<Wishlist> updateWishList(
+            @Field("doc_id") String doc_id,
+            @Field("user_mobile") String user_mobile,
+            @Field("status") String status);
+
     @GET("get_nearest_doctor.php")
     Call<List<Doctor>> getNearestDoctor();
 
@@ -96,6 +114,12 @@ public interface ApiInterface {
 
     @GET("get_doctor_details.php")
     Call<List<Doctor>> getDoctorDetails(@Query("id") String id);
+
+    @GET("get_wishlist_info.php")
+    Call<List<Wishlist>> getWishlistInfo(@Query("doc_id") String doc_id, @Query("user_mobile") String user_mobile);
+
+    @GET("get_wishlist.php")
+    Call<List<Wishlist>> getWishList(@Query("user_mobile") String user_mobile);
 
     @GET("get_doctor_review.php")
     Call<List<Review>> getDoctorReview(@Query("doc_id") String doc_id);

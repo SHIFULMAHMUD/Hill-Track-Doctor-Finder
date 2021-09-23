@@ -44,8 +44,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     TextView nameTextView;
     @BindView(R.id.wishListLayout)
     LinearLayout wishListLayout;
-    @BindView(R.id.historyLayout)
-    LinearLayout historyLayout;
+    @BindView(R.id.aboutUsLayout)
+    LinearLayout aboutUsLayout;
     @BindView(R.id.profileLayout)
     LinearLayout profileLayout;
     @BindView(R.id.bloodBankLayout)
@@ -103,7 +103,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         profileLayout.setOnClickListener(this);
         bloodBankLayout.setOnClickListener(this);
         hospitalLayout.setOnClickListener(this);
-        historyLayout.setOnClickListener(this);
+        aboutUsLayout.setOnClickListener(this);
         wishListLayout.setOnClickListener(this);
     }
     private void setSlidingImages(){
@@ -193,11 +193,11 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             Intent intent=new Intent(HomeActivity.this, HospitalActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.enter, R.anim.exit);
-        }else if (view==historyLayout){
-//            Intent intent=new Intent(HomeActivity.this, AmbulanceActivity.class);
-//            startActivity(intent);
-//            overridePendingTransition(R.anim.enter, R.anim.exit);
         }else if (view==wishListLayout){
+            Intent intent=new Intent(HomeActivity.this, WishListActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.enter, R.anim.exit);
+        }else if (view==aboutUsLayout){
 //            Intent intent=new Intent(HomeActivity.this, AmbulanceActivity.class);
 //            startActivity(intent);
 //            overridePendingTransition(R.anim.enter, R.anim.exit);

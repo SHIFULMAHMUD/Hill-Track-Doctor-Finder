@@ -455,7 +455,7 @@
                 android:layout_height="100dp"
                 android:background="@color/grey_10"/>
             <LinearLayout
-                android:id="@+id/historyLayout"
+                android:id="@+id/wishListLayout"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -467,7 +467,7 @@
                     android:layout_height="50dp"
                     android:scaleType="fitXY"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_history"/>
+                    android:src="@drawable/ic_favourite_outline"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -475,14 +475,14 @@
                     android:layout_gravity="center"
                     android:textSize="12sp"
                     android:layout_marginTop="5dp"
-                    android:text="History"/>
+                    android:text="Wishlist"/>
             </LinearLayout>
             <View
                 android:layout_width="1dp"
                 android:layout_height="100dp"
                 android:background="@color/grey_10"/>
             <LinearLayout
-                android:id="@+id/wishListLayout"
+                android:id="@+id/aboutUsLayout"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
