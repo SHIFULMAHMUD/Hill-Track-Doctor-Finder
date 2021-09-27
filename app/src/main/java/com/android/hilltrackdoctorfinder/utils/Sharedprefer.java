@@ -12,15 +12,6 @@ public class Sharedprefer {
         default_prefence = context.getSharedPreferences("health_guardian", Context.MODE_PRIVATE);
     }
 
-
-    public String getUsername() {
-        return default_prefence.getString("username", "");
-    }
-
-    public void setUsername(String username) {
-        default_prefence.edit().putString("username", username).apply();
-    }
-
     public String getFirst_name() {
         return default_prefence.getString("user_first_name", "");
     }
@@ -59,25 +50,6 @@ public class Sharedprefer {
     public void setLongitude(String user_longitude) {
         default_prefence.edit().putString("user_longitude", user_longitude).apply();
     }
-
-    public String getRecentNoInternet_page() {
-
-        return default_prefence.getString("internet_error_last_page", "");
-    }
-
-    public void setRecentNoInternet_page(String activity) {
-        default_prefence.edit().putString("internet_error_last_page", activity).apply();
-    }
-
-    public String getUserId() {
-
-        return default_prefence.getString("user_ID", "");
-    }
-
-    public void setUserId(String activity) {
-        default_prefence.edit().putString("user_ID", activity).apply();
-    }
-
 
     public String getUser_profile_picture() {
         return default_prefence.getString("user_profile_picture", "");

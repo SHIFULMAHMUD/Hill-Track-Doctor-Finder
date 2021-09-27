@@ -64,7 +64,7 @@ public class IsolationCenterActivity extends FragmentActivity implements OnMapRe
         sharedprefer = new Sharedprefer(this);
         loading=new Loading(this,false);
         ButterKnife.bind(this);
-        title.setText("Nearest Isolation Center");
+        title.setText(R.string.nearest_isolation_center);
         getNearestCenterData();
         back.setOnClickListener(this);
     }

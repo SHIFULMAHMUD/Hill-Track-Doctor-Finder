@@ -36,7 +36,7 @@ public class ReminderActivity extends AppCompatActivity implements DatePickerDia
         etContent = findViewById(R.id.etContent);
         title = findViewById(R.id.title);
         back = findViewById(R.id.back);
-        title.setText("Set Reminder");
+        title.setText(R.string.set_reminder);
         CardView btnNotify = findViewById(R.id.cardViewAdd);
         CardView btnCancel = findViewById(R.id.cardViewCancel);
 

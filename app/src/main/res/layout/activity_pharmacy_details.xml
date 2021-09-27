@@ -45,7 +45,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/nameTextView"
                 app:layout_constraintStart_toStartOf="parent"
                 android:textSize="@dimen/_16_sp"
-                android:text="Info"
+                android:text="@string/info"
                 android:layout_marginTop="@dimen/_50_dp"
                 android:layout_marginStart="@dimen/_20_dp"
                 android:textColor="@color/black"/>
@@ -75,7 +75,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Contact Number"
+                    android:text="@string/contact_number"
                     android:textColor="@color/grey_60"
                     android:textSize="@dimen/_12_sp"
                     android:layout_marginTop="@dimen/_10_dp"/>
@@ -89,7 +89,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Full Address"
+                    android:text="@string/full_address"
                     android:textColor="@color/grey_60"
                     android:textSize="@dimen/_12_sp"
                     android:layout_marginTop="@dimen/_10_dp"/>
@@ -104,7 +104,7 @@
                     android:id="@+id/headingDistanceTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Distance"
+                    android:text="@string/distance"
                     android:textColor="@color/grey_60"
                     android:textSize="@dimen/_12_sp"
                     android:layout_marginTop="@dimen/_10_dp"/>
@@ -120,7 +120,7 @@
                 android:id="@+id/contactViaTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Contact Via :"
+                android:text="@string/contact_via"
                 android:textColor="@color/black"
                 app:layout_constraintTop_toBottomOf="@+id/infoLayout"
                 app:layout_constraintStart_toStartOf="parent"

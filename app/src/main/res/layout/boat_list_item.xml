@@ -30,7 +30,6 @@
                         android:id="@+id/nameTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Shiful Mahmud"
                         android:textStyle="bold"
                         android:layout_marginStart="@dimen/_10_dp"
                         android:textSize="@dimen/_16_sp"
@@ -50,7 +49,6 @@
                     android:id="@+id/addressTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Chittagklsdfjkfjkl"
                     android:textSize="@dimen/_14_sp"
                         android:layout_marginStart="@dimen/_10_dp"
                     android:textColor="@color/black"/>
@@ -70,7 +68,6 @@
                         android:id="@+id/phoneTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="01516116489"
                         android:layout_marginStart="@dimen/_10_dp"
                         android:textSize="@dimen/_14_sp"
                         android:textColor="@color/colorPrimary"/>

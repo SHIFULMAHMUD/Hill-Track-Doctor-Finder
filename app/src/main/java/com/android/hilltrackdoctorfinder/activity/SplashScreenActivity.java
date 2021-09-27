@@ -22,7 +22,7 @@ public class SplashScreenActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         Tools.setSystemBarColor(SplashScreenActivity.this,R.color.purple_action_bar);
-//        FirebaseMessaging.getInstance().subscribeToTopic("Health");
+        FirebaseMessaging.getInstance().subscribeToTopic("HealthGuardian");
         handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

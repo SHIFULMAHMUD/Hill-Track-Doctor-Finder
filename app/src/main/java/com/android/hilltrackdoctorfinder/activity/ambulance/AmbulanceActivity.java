@@ -45,7 +45,7 @@ public class AmbulanceActivity extends BaseActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boat);
         ButterKnife.bind(this);
-        title.setText("Get Ambulance");
+        title.setText(R.string.get_ambulance);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);

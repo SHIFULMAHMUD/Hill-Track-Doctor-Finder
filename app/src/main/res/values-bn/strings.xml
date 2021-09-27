@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Health Guardian</string>
+
+    <!-- activity sign in/sign up -->
+    <string name="phone">ফোন</string>
+    <string name="password">পাসওয়ার্ড</string>
+    <string name="confirm_password">কনফার্ম পাসওয়ার্ড</string>
+    <string name="remember_me">মনে রাখুন</string>
+    <string name="sign_in">সাইন ইন</string>
+    <string name="dont_have_account">অ্যাকাউন্ট নেই?</string>
+    <string name="registernow">নিবন্ধন করুন</string>
+    <string name="first_name">নামের প্রথম অংশ</string>
+    <string name="last_name">নামের শেষাংশ</string>
+    <string name="have_account">একাউন্ট আছে?</string>
+    <string name="sign_up">নিবন্ধন করুন</string>
+    <string name="register">নিবন্ধন</string>
+    <!--    home-->
+    <string name="hospital_list">হাসপাতালের তালিকা</string>
+    <string name="nearest_hospital">নিকটতম হাসপাতাল</string>
+    <string name="get_faster_treatment">দ্রুত চিকিৎসা নিন</string>
+    <string name="confirm">কনফার্ম</string>
+    <string name="find_doctor">ডাক্তার খুঁজুন</string>
+    <string name="hire_boat">নৌকা ভাড়া</string>
+    <string name="set_reminder">রিমাইন্ডার দিন</string>
+    <string name="covid19">কোভিড -19</string>
+    <string name="have_u_taken_covid_prevention">আপনি কি কোভিড -19 প্রতিরোধের ব্যবস্থা নিয়েছেন?</string>
+    <string name="get_medicine">ঔষধ নিন</string>
+    <string name="get_vaccinated">টিকা নিন</string>
+    <string name="nearest_doctor">নিকটতম ডাক্তার</string>
+    <string name="nearest_pharmacy">নিকটতম ফার্মেসী</string>
+    <string name="doctor_list">ডাক্তারের তালিকা</string>
+    <string name="buy_online">অনলাইনে কিনুন</string>
+    <string name="covid_test_center">কোভিড পরীক্ষা কেন্দ্র</string>
+    <string name="isolation_center">আইসোলেশন সেন্টার</string>
+    <string name="explore_feature">আরও বৈশিষ্ট্যগুলি অন্বেষণ করুন</string>
+    <string name="manage_profile">প্রোফাইল পরিচালনা</string>
+    <string name="get_ambulance">অ্যাম্বুলেন্স খুঁজুন</string>
+    <string name="ambulance">অ্যাম্বুলেন্স</string>
+    <string name="blood_bank">ব্লাড ব্যাংক</string>
+    <string name="hospital">হাসপাতাল</string>
+    <string name="wishlist">প্রিয় তালিকা</string>
+    <string name="about_us">আমাদের সম্পর্কে</string>
+    <string name="welcome">স্বাগত</string>
+    <!--    ambulance-->
+    <string name="info">তথ্য</string>
+    <string name="pharmacy">ফার্মেসী</string>
+    <string name="contact_number">যোগাযোগের নম্বর</string>
+    <string name="full_address">পুরো ঠিকানা</string>
+    <string name="union">ইউনিয়ন</string>
+    <string name="facilities">সু্যোগ-সুবিধা</string>
+    <string name="contact_via">যোগাযোগের মাধ্যম :</string>
+    <!--    bloodbank-->
+    <string name="distance">দূরত্ব</string>
+    <string name="nearest_bloodbank">নিকটতম ব্লাড ব্যাংক</string>
+    <string name="blood_bank_list">ব্লাড ব্যাঙ্কের তালিকা</string>
+    <!--    boat-->
+    <string name="select_union">ইউনিয়ন নির্বাচন করুন</string>
+    <!--    covid center-->
+    <string name="website">ওয়েবসাইট</string>
+    <string name="nearest_covid_center">নিকটতম কোভিড পরীক্ষা কেন্দ্র</string>
+    <string name="nearest_isolation_center">নিকটতম বিচ্ছিন্নতা কেন্দ্র</string>
+    <!--    doctor-->
+    <string name="rating">রেটিং</string>
+    <string name="doctor_profile">ডাক্তারের প্রোফাইল</string>
+    <string name="all_review">সব রিভিউ</string>
+    <string name="qualification">যোগ্যতা</string>
+    <string name="specialist">বিশেষজ্ঞ</string>
+    <string name="email">ইমেল ঠিকানা</string>
+    <string name="availability">প্রাপ্যতা</string>
+    <string name="review">রিভিউ</string>
+    <string name="visit_doctor">ডাক্তারের কাছে যান</string>
+    <string name="consultation_time">পরামর্শের সময়</string>
+    <string name="joining_date">যোগদান তারিখ</string>
+    <string name="see_reviews">রিভিউ দেখুন</string>
+    <string name="search_doctor">ডাক্তার খুঁজুন. . </string>
+    <string name="search">খুঁজুন</string>
+    <!--    profile-->
+    <string name="change_photo">ছবি পরিবর্তন</string>
+    <string name="personal_info">ব্যক্তিগত তথ্য</string>
+    <string name="phone_number">ফোন নম্বর</string>
+    <string name="blood_group">রক্তের গ্রুপ</string>
+    <string name="submit">জমা দিন</string>
+    <!--    reminder-->
+    <string name="title">শিরোনাম</string>
+    <string name="detail">বিস্তারিত</string>
+    <string name="cancel">বাতিল করুন</string>
+    <string name="add">যোগ করুন</string>
+    <string name="write_title_here">এখানে শিরোনাম লিখুন..</string>
+    <string name="write_detail_here">এখানে বিস্তারিত লিখুন..</string>
+
+    <!--    no_internet-->
+    <string name="no_internet_found">ইন্টারনেট পাওয়া যায়নি, আপনার সংযোগ পরীক্ষা করুন অথবা আবার চেষ্টা করুন</string>
+    <string name="tap_to_retry">পুনরায় চেষ্টা করতে চাপুন</string>
+    <string name="congratulation">অভিনন্দন</string>
+    <string name="registration_successful">সফলভাবে নিবন্ধন সম্পন্ন হয়েছে</string>
+
+</resources>

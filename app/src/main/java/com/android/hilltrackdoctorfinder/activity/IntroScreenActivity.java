@@ -20,10 +20,6 @@ import androidx.viewpager.widget.ViewPager;
 
 
 public class IntroScreenActivity extends AppCompatActivity {
-
-
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
     ViewPager viewPagerIntro;
     DotsIndicator DotsIndicator;
     AdapterPagerIntro adapterPagerIntro;

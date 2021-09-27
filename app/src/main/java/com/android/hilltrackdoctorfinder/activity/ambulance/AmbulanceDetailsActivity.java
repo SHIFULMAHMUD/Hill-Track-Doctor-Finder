@@ -55,7 +55,7 @@ public class AmbulanceDetailsActivity extends BaseActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ambulance_details);
         ButterKnife.bind(this);
-        title.setText("Ambulance");
+        title.setText(R.string.ambulance);
         id = getIntent().getStringExtra("id");
         getAmbulanceInfo(id);
         back.setOnClickListener(this);

@@ -1,5 +1,6 @@
 package com.android.hilltrackdoctorfinder.activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
@@ -8,12 +9,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -38,8 +42,13 @@ import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener {
+    @BindView(R.id.languageImageButton)
+    ImageButton languageImageButton;
+    @BindView(R.id.notificationImageButton)
+    ImageButton notificationImageButton;
     @BindView(R.id.nameTextView)
     TextView nameTextView;
     @BindView(R.id.wishListLayout)
@@ -90,6 +99,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         startAutoSliderImage();
         viewPager_slider.setAdapter(sliderAdapter);
         dots_indicator.setViewPager(viewPager_slider);
+        setLocale(sharedprefer.getLanguage());
         userMobile=sharedprefer.getMobile_number();
         getUserLocation(userMobile);
         doctorLayout.setOnClickListener(this);
@@ -105,6 +115,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         hospitalLayout.setOnClickListener(this);
         aboutUsLayout.setOnClickListener(this);
         wishListLayout.setOnClickListener(this);
+        languageImageButton.setOnClickListener(this);
+        notificationImageButton.setOnClickListener(this);
     }
     private void setSlidingImages(){
         banner_data.clear();
@@ -135,7 +147,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                 if (response.code()==200) {
                     List<User> body=response.body();
                     Log.e("user location", new Gson().toJson(body));
-                    nameTextView.setText("Welcome "+body.get(0).getFirst_name()+" "+body.get(0).getLast_name()+"!");
+                    nameTextView.setText(getString(R.string.welcome)+" "+body.get(0).getFirst_name()+" "+body.get(0).getLast_name()+"!");
                     sharedprefer.setLatitude(body.get(0).getLatitude());
                     sharedprefer.setLongitude(body.get(0).getLongitude());
                 }
@@ -201,6 +213,43 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 //            Intent intent=new Intent(HomeActivity.this, AmbulanceActivity.class);
 //            startActivity(intent);
 //            overridePendingTransition(R.anim.enter, R.anim.exit);
+        }else if (view==languageImageButton){
+                showChangeLanguageDialog();
+        }else if (view==notificationImageButton){
+//            Intent intent=new Intent(HomeActivity.this, AmbulanceActivity.class);
+//            startActivity(intent);
+//            overridePendingTransition(R.anim.enter, R.anim.exit);
         }
+    }
+
+    private void showChangeLanguageDialog() {
+        final String[] language={"English","বাংলা"};
+        AlertDialog.Builder builder=new AlertDialog.Builder(HomeActivity.this);
+        builder.setTitle("Choose Language");
+        builder.setSingleChoiceItems(language, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (i==0)
+                {
+                    setLocale("en");
+                    recreate();
+                }else if (i==1)
+                {
+                    setLocale("bn");
+                    recreate();
+                }
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog alertDialog=builder.create();
+        alertDialog.show();
+    }
+    private void setLocale(String language){
+        Locale locale=new Locale(language);
+        Locale.setDefault(locale);
+        Configuration configuration=new Configuration();
+        configuration.locale=locale;
+        getBaseContext().getResources().updateConfiguration(configuration,getBaseContext().getResources().getDisplayMetrics());
+        sharedprefer.setLanguage(language);
     }
 }

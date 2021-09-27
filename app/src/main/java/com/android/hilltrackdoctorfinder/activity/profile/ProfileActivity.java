@@ -57,14 +57,14 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
     @BindView(R.id.back)
     ImageButton back;
     Spinner spinnerBloodGroup;
-    String[] blood_group = {"Choose Blood Group","A positive (A+)", "A negative (A-)", "B positive (B+)", "B negative (B-)", "O positive (O+)","O negative (O-)","AB positive (AB+)","AB negative (AB-)"};
+    String[] blood_group = {"A positive (A+)", "A negative (A-)", "B positive (B+)", "B negative (B-)", "O positive (O+)","O negative (O-)","AB positive (AB+)","AB negative (AB-)"};
     private ApiInterface apiInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
-        title.setText("Manage Profile");
+        title.setText(R.string.manage_profile);
         back.setOnClickListener(this);
         changePhotoTextView.setOnClickListener(this);
         editProfileTextView.setOnClickListener(this);

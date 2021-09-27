@@ -52,7 +52,7 @@ public class IsolationCenterDetailsActivity extends BaseActivity implements View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_center_details);
         ButterKnife.bind(this);
-        title.setText("Isolation Center");
+        title.setText(R.string.isolation_center);
         id = getIntent().getStringExtra("id");
 
         if (id!=null)

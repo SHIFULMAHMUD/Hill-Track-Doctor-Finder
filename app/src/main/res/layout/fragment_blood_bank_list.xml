@@ -21,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="@dimen/_10_dp"
             android:layout_marginTop="@dimen/_20_dp"
-            android:text="Select Union"
+            android:text="@string/select_union"
             android:textSize="@dimen/_16_sp"
             android:textColor="@color/colorPrimary"/>
         <LinearLayout

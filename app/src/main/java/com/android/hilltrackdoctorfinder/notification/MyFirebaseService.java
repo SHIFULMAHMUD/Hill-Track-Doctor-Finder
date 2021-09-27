@@ -18,7 +18,7 @@ public class MyFirebaseService extends FirebaseMessagingService {
 
     private static final String CHANNEL_ID = "CHANNELID";
 
-    String TAG = "FirebassePush";
+    String TAG = "FirebasePush";
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -70,7 +70,7 @@ public class MyFirebaseService extends FirebaseMessagingService {
     @Override
     public void onNewToken(String token) {
         Log.d("token", "token: " + token);
-        FirebaseMessaging.getInstance().subscribeToTopic("Health");
+        FirebaseMessaging.getInstance().subscribeToTopic("HealthGuardian");
     }
 
 

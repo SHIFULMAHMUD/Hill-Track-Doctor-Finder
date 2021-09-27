@@ -67,7 +67,7 @@
                     android:id="@+id/ratingHeadingTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rating"
+                    android:text="@string/rating"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_12_sp" />
                 <TextView
@@ -94,7 +94,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ratingLayout"
                 app:layout_constraintStart_toStartOf="parent"
                 android:textSize="@dimen/_16_sp"
-                android:text="Info"
+                android:text="@string/info"
                 android:layout_marginTop="@dimen/_30_dp"
                 android:layout_marginStart="@dimen/_20_dp"
                 android:textColor="@color/black"/>
@@ -123,7 +123,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Qualification"
+                    android:text="@string/qualification"
                     android:textColor="@color/grey_60"
                     android:textSize="@dimen/_12_sp"/>
                 <TextView
@@ -136,7 +136,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Specialist"
+                    android:text="@string/specialist"
                     android:textColor="@color/grey_60"
                     android:textSize="@dimen/_12_sp"
                     android:layout_marginTop="@dimen/_10_dp"/>
@@ -150,7 +150,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Contact Number"
+                    android:text="@string/contact_number"
                     android:textColor="@color/grey_60"
                     android:textSize="@dimen/_12_sp"
                     android:layout_marginTop="@dimen/_10_dp"/>
@@ -164,7 +164,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email Address"
+                    android:text="@string/email"
                     android:textColor="@color/grey_60"
                     android:textSize="@dimen/_12_sp"
                     android:layout_marginTop="@dimen/_10_dp"/>
@@ -178,7 +178,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Availability"
+                    android:text="@string/availability"
                     android:textColor="@color/grey_60"
                     android:textSize="@dimen/_12_sp"
                     android:layout_marginTop="@dimen/_10_dp"/>
@@ -192,7 +192,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Consultation Time"
+                    android:text="@string/consultation_time"
                     android:textColor="@color/grey_60"
                     android:textSize="@dimen/_12_sp"
                     android:layout_marginTop="@dimen/_10_dp"/>
@@ -206,7 +206,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Full Address"
+                    android:text="@string/full_address"
                     android:textColor="@color/grey_60"
                     android:textSize="@dimen/_12_sp"
                     android:layout_marginTop="@dimen/_10_dp"/>
@@ -221,7 +221,7 @@
                     android:id="@+id/headingDistanceTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Distance"
+                    android:text="@string/distance"
                     android:textColor="@color/grey_60"
                     android:textSize="@dimen/_12_sp"
                     android:layout_marginTop="@dimen/_10_dp"/>
@@ -235,7 +235,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Joining Date"
+                    android:text="@string/joining_date"
                     android:textColor="@color/grey_60"
                     android:textSize="@dimen/_12_sp"
                     android:layout_marginTop="@dimen/_10_dp"/>
@@ -251,7 +251,7 @@
                     android:id="@+id/seeReviewTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="See Reviews"
+                    android:text="@string/see_reviews"
                     android:drawableStart="@drawable/ic_visibility"
                     android:drawablePadding="@dimen/_5_dp"
                     android:layout_marginTop="@dimen/_10_dp"
@@ -262,7 +262,7 @@
                 android:id="@+id/contactViaTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Contact Via :"
+                android:text="@string/contact_via"
                 android:textColor="@color/black"
                 app:layout_constraintTop_toBottomOf="@+id/infoLayout"
                 app:layout_constraintStart_toStartOf="parent"

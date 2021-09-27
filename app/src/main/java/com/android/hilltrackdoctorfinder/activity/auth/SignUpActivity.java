@@ -220,7 +220,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
             return true;
         } else {
             error.setVisibility(View.VISIBLE);
-            error.setText(R.string.password_not_match);
+            error.setText("Password not matched");
             return false;
         }
     }

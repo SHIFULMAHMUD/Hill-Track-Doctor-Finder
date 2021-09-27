@@ -307,7 +307,7 @@
                             android:id="@+id/editTextPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/Password"
+                            android:hint="@string/password"
                             android:inputType="textPassword"
                             android:paddingStart="15dp"
                             android:backgroundTint="@color/color_gray"

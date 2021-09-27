@@ -43,7 +43,7 @@ public class DoctorReviewActivity extends BaseActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_review);
         ButterKnife.bind(this);
-        title.setText("All Review");
+        title.setText(R.string.all_review);
         String id= getIntent().getStringExtra("id");
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);

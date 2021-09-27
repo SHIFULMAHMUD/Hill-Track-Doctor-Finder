@@ -99,7 +99,7 @@ public class DoctorDetailsActivity extends BaseActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_details);
         ButterKnife.bind(this);
-        title.setText("Doctor Profile");
+        title.setText(R.string.doctor_profile);
         id = getIntent().getStringExtra("id");
         doctor_id = getIntent().getStringExtra("doctor_id");
 

@@ -26,7 +26,7 @@ public class VaccineActivity extends BaseActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vaccine);
         ButterKnife.bind(this);
-        title.setText("Get Vaccinated");
+        title.setText(R.string.get_vaccinated);
         String Url="https://surokkha.gov.bd/";
         WebSettings webSettings=webView.getSettings();
         webSettings.setJavaScriptEnabled(true);

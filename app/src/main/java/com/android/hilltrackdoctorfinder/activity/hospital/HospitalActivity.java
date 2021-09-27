@@ -31,7 +31,7 @@ public class HospitalActivity extends BaseActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital);
         ButterKnife.bind(this);
-        title.setText("Hospital");
+        title.setText(R.string.hospital);
         viewPager = findViewById(R.id.simpleViewPager);
         tabLayout = findViewById(R.id.simpleTabLayout);
         setupViewPager();
@@ -44,8 +44,8 @@ public class HospitalActivity extends BaseActivity implements View.OnClickListen
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabGravity(tabLayout.GRAVITY_FILL);
-        tabLayout.getTabAt(0).setText("Hospital List");
-        tabLayout.getTabAt(1).setText("Nearest Hospital");
+        tabLayout.getTabAt(0).setText(R.string.hospital_list);
+        tabLayout.getTabAt(1).setText(R.string.nearest_hospital);
     }
     //for back button
     @Override

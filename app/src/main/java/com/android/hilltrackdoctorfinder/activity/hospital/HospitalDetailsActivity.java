@@ -55,7 +55,7 @@ public class HospitalDetailsActivity extends BaseActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital_details);
         ButterKnife.bind(this);
-        title.setText("Hospital");
+        title.setText(R.string.hospital);
         id = getIntent().getStringExtra("id");
         hospital_id = getIntent().getStringExtra("hospital_id");
 

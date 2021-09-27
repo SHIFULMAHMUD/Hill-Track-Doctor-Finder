@@ -19,7 +19,7 @@
             android:ems="10"
             android:textColorHint="@color/colorAccent"
             android:backgroundTint="@color/colorAccent"
-            android:hint="Search Doctor. . "
+            android:hint="@string/search_doctor"
             android:textColor="@color/colorAccent"
             android:inputType="text" />
 
@@ -30,7 +30,7 @@
             android:layout_weight="1"
             android:textColor="@android:color/white"
             android:background="@color/colorPrimaryDark"
-            android:text="Search" />
+            android:text="@string/search" />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:background="?android:attr/selectableItemBackground"

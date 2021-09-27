@@ -66,7 +66,7 @@ public class CovidCenterActivity extends FragmentActivity implements OnMapReadyC
         sharedprefer = new Sharedprefer(this);
         loading=new Loading(this,false);
         ButterKnife.bind(this);
-        title.setText("Nearest Covid Test Center");
+        title.setText(R.string.nearest_covid_center);
         getNearestCenterData();
         back.setOnClickListener(this);
     }

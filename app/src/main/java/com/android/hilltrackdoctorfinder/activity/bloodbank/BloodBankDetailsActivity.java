@@ -53,7 +53,7 @@ public class BloodBankDetailsActivity extends BaseActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bloodbank_details);
         ButterKnife.bind(this);
-        title.setText("Blood Bank");
+        title.setText(R.string.blood_bank);
         id = getIntent().getStringExtra("id");
         blood_bank_id = getIntent().getStringExtra("blood_bank_id");
 

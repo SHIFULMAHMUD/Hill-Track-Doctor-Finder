@@ -30,6 +30,7 @@
                 android:textStyle="bold"
                 android:layout_margin="20dp"/>
             <ImageButton
+                android:id="@+id/notificationImageButton"
                 android:layout_width="0dp"
                 android:layout_weight="0.3"
                 android:layout_height="25dp"
@@ -37,6 +38,7 @@
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/ic_notifications"/>
             <ImageButton
+                android:id="@+id/languageImageButton"
                 android:layout_width="0dp"
                 android:layout_weight="0.3"
                 android:layout_height="25dp"
@@ -66,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:layout_marginStart="10dp"
-                    android:text="Get Faster Treatment"
+                    android:text="@string/get_faster_treatment"
                     android:fontFamily="@font/roboto_bold"/>
                 <View
                     android:layout_width="match_parent"
@@ -98,7 +100,7 @@
                             android:layout_gravity="center"
                             android:textSize="12sp"
                             android:layout_marginTop="5dp"
-                            android:text="Find Doctor"/>
+                            android:text="@string/find_doctor"/>
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/boatLayout"
@@ -120,7 +122,7 @@
                             android:layout_gravity="center"
                             android:textSize="12sp"
                             android:layout_marginTop="5dp"
-                            android:text="Hire Boat"/>
+                            android:text="@string/hire_boat"/>
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/medicineLayout"
@@ -141,7 +143,7 @@
                             android:layout_gravity="center"
                             android:textSize="12sp"
                             android:layout_marginTop="5dp"
-                            android:text="Get Medicine"/>
+                            android:text="@string/get_medicine"/>
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/reminderLayout"
@@ -162,7 +164,7 @@
                             android:layout_gravity="center"
                             android:textSize="12sp"
                             android:layout_marginTop="5dp"
-                            android:text="Set Reminder"/>
+                            android:text="@string/set_reminder"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -212,7 +214,7 @@
             app:layout_constraintTop_toBottomOf="@+id/sliderCardView"
             app:layout_constraintStart_toStartOf="parent"
             android:textColor="@color/black"
-            android:text="COVID-19"
+            android:text="@string/covid19"
             android:textStyle="bold"
             android:layout_margin="20dp"/>
         <TextView
@@ -222,7 +224,7 @@
             app:layout_constraintTop_toBottomOf="@+id/covidTv"
             app:layout_constraintStart_toStartOf="parent"
             android:textColor="@color/grey_60"
-            android:text="Have you taken COVID-19 prevention ?"
+            android:text="@string/have_u_taken_covid_prevention"
             android:textSize="12sp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"/>
@@ -255,7 +257,7 @@
                     android:layout_gravity="center"
                     android:textSize="12sp"
                     android:layout_marginTop="5dp"
-                    android:text="Get Vaccinated"/>
+                    android:text="@string/get_vaccinated"/>
             </LinearLayout>
             <View
                 android:layout_width="1dp"
@@ -282,7 +284,7 @@
                     android:layout_gravity="center"
                     android:textSize="12sp"
                     android:layout_marginTop="5dp"
-                    android:text="Covid Test Center"/>
+                    android:text="@string/covid_test_center"/>
             </LinearLayout>
             <View
                 android:layout_width="1dp"
@@ -308,7 +310,7 @@
                     android:layout_gravity="center"
                     android:textSize="12sp"
                     android:layout_marginTop="5dp"
-                    android:text="Isolation Center"/>
+                    android:text="@string/isolation_center"/>
             </LinearLayout>
         </LinearLayout>
         <View
@@ -324,7 +326,7 @@
             app:layout_constraintTop_toBottomOf="@+id/covidLayout"
             app:layout_constraintStart_toStartOf="parent"
             android:textColor="@color/black"
-            android:text="Explore More Features"
+            android:text="@string/explore_feature"
             android:fontFamily="@font/roboto_bold"
             android:layout_margin="20dp"/>
         <LinearLayout
@@ -356,7 +358,7 @@
                     android:layout_gravity="center"
                     android:textSize="12sp"
                     android:layout_marginTop="5dp"
-                    android:text="Manage Profile"/>
+                    android:text="@string/manage_profile"/>
             </LinearLayout>
             <View
                 android:layout_width="1dp"
@@ -383,7 +385,7 @@
                     android:layout_gravity="center"
                     android:textSize="12sp"
                     android:layout_marginTop="5dp"
-                    android:text="Get Ambulance"/>
+                    android:text="@string/get_ambulance"/>
             </LinearLayout>
             <View
                 android:layout_width="1dp"
@@ -409,7 +411,7 @@
                     android:layout_gravity="center"
                     android:textSize="12sp"
                     android:layout_marginTop="5dp"
-                    android:text="Blood Bank"/>
+                    android:text="@string/blood_bank"/>
             </LinearLayout>
         </LinearLayout>
         <View
@@ -448,7 +450,7 @@
                     android:layout_gravity="center"
                     android:textSize="12sp"
                     android:layout_marginTop="5dp"
-                    android:text="Hospital"/>
+                    android:text="@string/hospital"/>
             </LinearLayout>
             <View
                 android:layout_width="1dp"
@@ -475,7 +477,7 @@
                     android:layout_gravity="center"
                     android:textSize="12sp"
                     android:layout_marginTop="5dp"
-                    android:text="Wishlist"/>
+                    android:text="@string/wishlist"/>
             </LinearLayout>
             <View
                 android:layout_width="1dp"
@@ -501,7 +503,7 @@
                     android:layout_gravity="center"
                     android:textSize="12sp"
                     android:layout_marginTop="5dp"
-                    android:text="About Us"/>
+                    android:text="@string/about_us"/>
             </LinearLayout>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

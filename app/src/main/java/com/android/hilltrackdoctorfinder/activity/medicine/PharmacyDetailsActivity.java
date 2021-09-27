@@ -52,7 +52,7 @@ public class PharmacyDetailsActivity extends BaseActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pharmacy_details);
         ButterKnife.bind(this);
-        title.setText("Pharmacy");
+        title.setText(R.string.pharmacy);
         id = getIntent().getStringExtra("id");
 
         if (id!=null)

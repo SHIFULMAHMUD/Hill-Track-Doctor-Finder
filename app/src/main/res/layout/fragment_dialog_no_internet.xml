@@ -39,7 +39,7 @@
             android:layout_marginBottom="4sp"
             android:gravity="center"
             android:layout_margin="20dp"
-            android:text="No Internet Found, Check Your Connection \n Or Try again"
+            android:text="@string/no_internet_found"
             android:textSize="16dp" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:textSize="15dp"
             android:textAllCaps="false"
-            android:text="Tap to Retry"
+            android:text="@string/tap_to_retry"
             android:clickable="true"
             android:layout_marginTop="20dp"
             android:background="@drawable/button_round_shaped"

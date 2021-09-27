@@ -50,7 +50,7 @@ public class BoatActivity extends BaseActivity implements View.OnClickListener, 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boat);
         ButterKnife.bind(this);
-        title.setText("Hire Boat");
+        title.setText(R.string.hire_boat);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);

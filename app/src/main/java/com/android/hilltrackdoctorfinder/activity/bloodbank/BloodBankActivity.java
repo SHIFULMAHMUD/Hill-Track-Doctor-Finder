@@ -29,7 +29,7 @@ public class BloodBankActivity extends BaseActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blood_bank);
         ButterKnife.bind(this);
-        title.setText("Blood Bank");
+        title.setText(R.string.blood_bank);
         viewPager = findViewById(R.id.simpleViewPager);
         tabLayout = findViewById(R.id.simpleTabLayout);
         setupViewPager();
@@ -42,8 +42,8 @@ public class BloodBankActivity extends BaseActivity implements View.OnClickListe
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabGravity(tabLayout.GRAVITY_FILL);
-        tabLayout.getTabAt(0).setText("BloodBank List");
-        tabLayout.getTabAt(1).setText("Nearest BloodBank");
+        tabLayout.getTabAt(0).setText(R.string.blood_bank_list);
+        tabLayout.getTabAt(1).setText(R.string.nearest_bloodbank);
     }
     //for back button
     @Override

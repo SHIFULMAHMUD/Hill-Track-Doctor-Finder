@@ -52,7 +52,7 @@ public class CovidCenterDetailsActivity extends BaseActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_center_details);
         ButterKnife.bind(this);
-        title.setText("Covid Test Center");
+        title.setText(R.string.covid_test_center);
         id = getIntent().getStringExtra("id");
 
         if (id!=null)
