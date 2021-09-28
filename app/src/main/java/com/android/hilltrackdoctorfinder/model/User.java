@@ -9,6 +9,8 @@ public class User {
     public String last_name;
     @SerializedName("mobile")
     public String mobile;
+    @SerializedName("image")
+    public String image;
     @SerializedName("password")
     public String password;
     @SerializedName("address")
@@ -48,6 +50,10 @@ public class User {
 
     public String getLongitude() {
         return longitude;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public String getToken() {

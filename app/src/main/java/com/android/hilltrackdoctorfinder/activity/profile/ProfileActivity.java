@@ -1,15 +1,30 @@
 package com.android.hilltrackdoctorfinder.activity.profile;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -21,20 +36,37 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.hilltrackdoctorfinder.R;
 import com.android.hilltrackdoctorfinder.activity.BaseActivity;
+import com.android.hilltrackdoctorfinder.activity.HomeActivity;
+import com.android.hilltrackdoctorfinder.activity.auth.SignInActivity;
 import com.android.hilltrackdoctorfinder.api.ApiClient;
 import com.android.hilltrackdoctorfinder.api.ApiInterface;
 import com.android.hilltrackdoctorfinder.model.Doctor;
+import com.android.hilltrackdoctorfinder.model.Login;
 import com.android.hilltrackdoctorfinder.model.User;
 import com.android.hilltrackdoctorfinder.utils.Tools;
 import com.android.hilltrackdoctorfinder.utils.Urls;
 import com.bumptech.glide.Glide;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.DexterError;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.PermissionRequestErrorListener;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.util.List;
 
 public class ProfileActivity extends BaseActivity implements View.OnClickListener {
@@ -52,10 +84,16 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
     TextView addressTextView;
     @BindView(R.id.bloodGroupTextView)
     TextView bloodGroupTextView;
+    @BindView(R.id.userImageView)
+    CircularImageView userImageView;
     @BindView(R.id.title)
     TextView title;
     @BindView(R.id.back)
     ImageButton back;
+    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 9;
+    private static final int SELECT_REQUEST_CODE = 6;
+    Bitmap bitmap = null;
+    Uri imageUri;
     Spinner spinnerBloodGroup;
     String[] blood_group = {"A positive (A+)", "A negative (A-)", "B positive (B+)", "B negative (B-)", "O positive (O+)","O negative (O-)","AB positive (AB+)","AB negative (AB-)"};
     private ApiInterface apiInterface;
@@ -81,6 +119,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
                 if (response.code()==200) {
                     loading.end();
                     List<User> body=response.body();
+                    Glide.with(context).load(Urls.ProfileImageUrl+body.get(0).getImage()).placeholder(R.drawable.user).into(userImageView);
                     firstNameTextView.setText(body.get(0).getFirst_name());
                     lastNameTextView.setText(body.get(0).getLast_name());
                     mobileTextView.setText(body.get(0).getMobile());
@@ -166,13 +205,146 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         });
         dialog.show();
     }
+    private void imageSelectionAction() {
+        if (ContextCompat.checkSelfPermission(ProfileActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(ProfileActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+
+            new AlertDialog.Builder(ProfileActivity.this)
+                    .setTitle("Choose Action")
+                    .setCancelable(true)
+                    .setPositiveButton(Html.fromHtml("<font color='#A4034E'>Camera</font>"), (dialog, which) -> {
+
+                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivityForResult(intent, 1100);
+
+                    })
+                    .setNegativeButton(Html.fromHtml("<font color='#A4034E'>Storage</font>"), (dialog, which) -> {
+
+                        // Perform Your Task Here--When No is pressed
+                        Intent select = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        startActivityForResult(select, SELECT_REQUEST_CODE);
+                        dialog.cancel();
+                    }).show();
+
+        } else {
+            requestAllPermission();
+        }
+
+    }
+    private void requestAllPermission() {
+        Dexter.withActivity(ProfileActivity.this)
+                .withPermissions(
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.ACCESS_NETWORK_STATE,
+                        Manifest.permission.CAMERA
+                )
+                .withListener(new MultiplePermissionsListener() {
+                    @Override
+                    public void onPermissionsChecked(MultiplePermissionsReport report) {
+                        // check if all permissions are granted
+                        if (report.areAllPermissionsGranted()) {
+                            // Toast.makeText(getApplicationContext(), "All permissions are granted!", Toast.LENGTH_SHORT).show();
+                            imageSelectionAction();
+                        }
+
+                        // check for permanent denial of any permission
+                        if (report.isAnyPermissionPermanentlyDenied()) {
+                            // show alert dialog navigating to Settings
+                            //showSettingsDialog();
+                        }
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                        token.continuePermissionRequest();
+                    }
+                }).
+                withErrorListener(new PermissionRequestErrorListener() {
+                    @Override
+                    public void onError(DexterError error) {
+                        //Toast.makeText(getApplicationContext(), "Error occurred! ", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .onSameThread()
+                .check();
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == SELECT_REQUEST_CODE && data != null) {
+            try {
+                imageUri = data.getData();
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+                Glide.with(getApplicationContext()).load(imageUri).centerCrop().into(userImageView);
+                ImageUpload();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if (requestCode == 1100 && resultCode == RESULT_OK && data != null) {
+
+            bitmap = (Bitmap) data.getExtras().get("data");
+
+// CALL THIS METHOD TO GET THE URI FROM THE BITMAP
+            imageUri = getImageUri(ProfileActivity.this, bitmap);
+            Glide.with(getApplicationContext()).load(imageUri).centerCrop().into(userImageView);
+            ImageUpload();
+        }
+    }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
+
+    public String getRealPathFromURI(Uri uri) {
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+        return cursor.getString(idx);
+    }
+
+    private void ImageUpload() {
+        File file = new File(getRealPathFromURI(imageUri));
+        RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"), file);
+        MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
+        RequestBody filename = RequestBody.create(MediaType.parse("text/plain"), file.getName());
+        RequestBody mobile = RequestBody.create(MediaType.parse("text/plain"), sharedprefer.getMobile_number());
+
+        loading.start();
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<User> call = apiInterface.uploadImage(fileToUpload,filename,mobile);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.code()==200) {
+                    loading.end();
+                    User body=response.body();
+                    if (body.getValue().equals("success"))
+                    {
+                        Tools.setSuccessToast(ProfileActivity.this,body.getMessage());
+                    }
+                    else if (body.getValue().equals("failure"))
+                    {
+                        Tools.setErrorToast(ProfileActivity.this,body.getMessage());
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                loading.end();
+            }
+        });
+    }
 
     @Override
     public void onClick(View view) {
         if (view==back){
             finish();
         }else if (view==changePhotoTextView){
-
+            imageSelectionAction();
         }else if (view==editProfileTextView){
             showEditProfileDialog();
         }

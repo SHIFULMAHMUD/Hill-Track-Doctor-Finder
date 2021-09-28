@@ -211,9 +211,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             startActivity(intent);
             overridePendingTransition(R.anim.enter, R.anim.exit);
         }else if (view==aboutUsLayout){
-//            Intent intent=new Intent(HomeActivity.this, AmbulanceActivity.class);
-//            startActivity(intent);
-//            overridePendingTransition(R.anim.enter, R.anim.exit);
+                showAboutUsDialog();
         }else if (view==languageImageButton){
                 showChangeLanguageDialog();
         }else if (view==notificationImageButton){
@@ -221,6 +219,23 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             startActivity(intent);
             overridePendingTransition(R.anim.enter, R.anim.exit);
         }
+    }
+
+    private void showAboutUsDialog() {
+        AlertDialog.Builder builder=new AlertDialog.Builder(HomeActivity.this);
+        builder.setMessage("Health Guardian is a system that is developed to serve the local peoples of Kaptai Upazila. Patients can find Nearest Doctors from their location in Google Map & can take appointment easily. Others features are Hire Boat, Buy Medicine, Set Reminder, Get Vaccination, Get Ambulance, Find nearest locations of Hospitals, Blood Banks, Covid Test Centers & Isolation Centers etc. The system designed to help one find easy health care in hill track areas.")
+                .setCancelable(false)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+//                        finish();
+                        dialog.dismiss();
+                    }
+                });
+        //Creating dialog box
+        AlertDialog alert = builder.create();
+        //Setting the title manually
+        alert.setTitle("About Us");
+        alert.show();
     }
 
     private void showChangeLanguageDialog() {
