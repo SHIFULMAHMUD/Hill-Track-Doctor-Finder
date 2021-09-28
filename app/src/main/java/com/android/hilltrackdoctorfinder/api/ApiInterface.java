@@ -7,6 +7,7 @@ import com.android.hilltrackdoctorfinder.model.Center;
 import com.android.hilltrackdoctorfinder.model.Doctor;
 import com.android.hilltrackdoctorfinder.model.Hospital;
 import com.android.hilltrackdoctorfinder.model.Login;
+import com.android.hilltrackdoctorfinder.model.Notification;
 import com.android.hilltrackdoctorfinder.model.Pharmacy;
 import com.android.hilltrackdoctorfinder.model.Register;
 import com.android.hilltrackdoctorfinder.model.Review;
@@ -120,6 +121,12 @@ public interface ApiInterface {
 
     @GET("get_wishlist.php")
     Call<List<Wishlist>> getWishList(@Query("user_mobile") String user_mobile);
+
+    @GET("get_notification.php")
+    Call<List<Notification>> getNotifications();
+
+    @GET("get_notification_details.php")
+    Call<List<Notification>> getNotificationDetails(@Query("id") String id);
 
     @GET("get_doctor_review.php")
     Call<List<Review>> getDoctorReview(@Query("doc_id") String doc_id);

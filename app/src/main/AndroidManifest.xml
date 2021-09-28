@@ -14,11 +14,18 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
-        <activity android:name=".activity.profile.ProfileActivity"
+        <activity android:name=".activity.notifier.NotificationDetailsActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.doctor.DoctorReviewActivity"
+        <activity android:name=".activity.notifier.NotificationActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.WishListActivity"
+        <activity
+            android:name=".activity.profile.ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.doctor.DoctorReviewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WishListActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.BoatActivity"
@@ -56,7 +63,6 @@
         <activity
             android:name=".activity.hospital.HospitalDetailsActivity"
             android:screenOrientation="portrait" />
-
         <activity android:name=".activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -117,7 +123,6 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
     </application>
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
@@ -128,6 +133,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <uses-permission android:name="android.permission.CAMERA" />
 
 </manifest>

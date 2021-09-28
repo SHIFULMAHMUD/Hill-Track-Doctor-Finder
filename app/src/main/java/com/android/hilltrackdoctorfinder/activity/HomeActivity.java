@@ -32,6 +32,7 @@ import com.android.hilltrackdoctorfinder.activity.covid.VaccineActivity;
 import com.android.hilltrackdoctorfinder.activity.doctor.DoctorActivity;
 import com.android.hilltrackdoctorfinder.activity.hospital.HospitalActivity;
 import com.android.hilltrackdoctorfinder.activity.medicine.MedicineActivity;
+import com.android.hilltrackdoctorfinder.activity.notifier.NotificationActivity;
 import com.android.hilltrackdoctorfinder.activity.profile.ProfileActivity;
 import com.android.hilltrackdoctorfinder.adapter.ViewPagerSliderAdapter;
 import com.android.hilltrackdoctorfinder.api.ApiClient;
@@ -216,9 +217,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         }else if (view==languageImageButton){
                 showChangeLanguageDialog();
         }else if (view==notificationImageButton){
-//            Intent intent=new Intent(HomeActivity.this, AmbulanceActivity.class);
-//            startActivity(intent);
-//            overridePendingTransition(R.anim.enter, R.anim.exit);
+            Intent intent=new Intent(HomeActivity.this, NotificationActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.enter, R.anim.exit);
         }
     }
 

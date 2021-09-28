@@ -40,6 +40,8 @@
     <string name="blood_bank">ব্লাড ব্যাংক</string>
     <string name="hospital">হাসপাতাল</string>
     <string name="wishlist">প্রিয় তালিকা</string>
+    <string name="notification">বিজ্ঞপ্তি</string>
+    <string name="notification_details">বিজ্ঞপ্তির বিবরণ</string>
     <string name="about_us">আমাদের সম্পর্কে</string>
     <string name="welcome">স্বাগত</string>
     <!--    ambulance-->
